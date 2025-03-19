@@ -1192,23 +1192,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@midnight-ntwrk/bboard-api-tutorial@workspace:*, @midnight-ntwrk/bboard-api-tutorial@workspace:examples/bboard-tutorial/api":
-  version: 0.0.0-use.local
-  resolution: "@midnight-ntwrk/bboard-api-tutorial@workspace:examples/bboard-tutorial/api"
-  dependencies:
-    "@midnight-ntwrk/bboard-contract-tutorial": "workspace:*"
-    "@types/ws": "npm:^8.5.9"
-    allure-commandline: "npm:^2.28.0"
-    allure-jest: "npm:^2.15.1"
-    allure-js-commons: "npm:^2.15.1"
-    eslint: "npm:^8.52.0"
-    jest: "npm:^29.7.0"
-    pino: "npm:^8.16.1"
-    typescript: "npm:^5.2.2"
-    ws: "npm:^8.14.2"
-  languageName: unknown
-  linkType: soft
-
 "@midnight-ntwrk/bboard-api@workspace:*, @midnight-ntwrk/bboard-api@workspace:examples/bboard/api":
   version: 0.0.0-use.local
   resolution: "@midnight-ntwrk/bboard-api@workspace:examples/bboard/api"
@@ -1221,26 +1204,6 @@ __metadata:
     eslint: "npm:^8.52.0"
     jest: "npm:^29.7.0"
     pino: "npm:^8.16.1"
-    typescript: "npm:^5.2.2"
-    ws: "npm:^8.14.2"
-  languageName: unknown
-  linkType: soft
-
-"@midnight-ntwrk/bboard-cli-tutorial@workspace:examples/bboard-tutorial/bboard-cli":
-  version: 0.0.0-use.local
-  resolution: "@midnight-ntwrk/bboard-cli-tutorial@workspace:examples/bboard-tutorial/bboard-cli"
-  dependencies:
-    "@midnight-ntwrk/bboard-api-tutorial": "workspace:*"
-    "@midnight-ntwrk/bboard-contract-tutorial": "workspace:*"
-    "@types/jest": "npm:^29.5.12"
-    "@types/ws": "npm:^8.5.9"
-    allure-commandline: "npm:^2.32.0"
-    allure-jest: "npm:^3.0.5"
-    allure-js-commons: "npm:^3.0.5"
-    eslint: "npm:^8.52.0"
-    jest: "npm:^29.7.0"
-    pino: "npm:^8.16.1"
-    ts-jest: "npm:^29.1.2"
     typescript: "npm:^5.2.2"
     ws: "npm:^8.14.2"
   languageName: unknown
@@ -1266,17 +1229,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@midnight-ntwrk/bboard-contract-tutorial@workspace:*, @midnight-ntwrk/bboard-contract-tutorial@workspace:examples/bboard-tutorial/contract":
-  version: 0.0.0-use.local
-  resolution: "@midnight-ntwrk/bboard-contract-tutorial@workspace:examples/bboard-tutorial/contract"
-  dependencies:
-    "@midnight-ntwrk/compact": "workspace:*"
-    eslint: "npm:^8.52.0"
-    jest: "npm:^29.7.0"
-    typescript: "npm:^5.2.2"
-  languageName: unknown
-  linkType: soft
-
 "@midnight-ntwrk/bboard-contract@workspace:*, @midnight-ntwrk/bboard-contract@workspace:examples/bboard/contract":
   version: 0.0.0-use.local
   resolution: "@midnight-ntwrk/bboard-contract@workspace:examples/bboard/contract"
@@ -1285,34 +1237,6 @@ __metadata:
     eslint: "npm:^8.52.0"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.2.2"
-  languageName: unknown
-  linkType: soft
-
-"@midnight-ntwrk/bboard-ui-tutorial@workspace:examples/bboard-tutorial/bboard-ui":
-  version: 0.0.0-use.local
-  resolution: "@midnight-ntwrk/bboard-ui-tutorial@workspace:examples/bboard-tutorial/bboard-ui"
-  dependencies:
-    "@emotion/react": "npm:^11.11.1"
-    "@emotion/styled": "npm:^11.11.0"
-    "@midnight-ntwrk/bboard-api-tutorial": "workspace:*"
-    "@midnight-ntwrk/bboard-contract-tutorial": "workspace:*"
-    "@mui/icons-material": "npm:^5.14.14"
-    "@mui/material": "npm:^5.14.14"
-    "@originjs/vite-plugin-commonjs": "npm:^1.0.3"
-    "@types/react": "npm:^18.2.0"
-    "@types/react-dom": "npm:^18.2.0"
-    "@vitejs/plugin-react": "npm:^4.1.1"
-    buffer: "npm:^6.0.3"
-    eslint: "npm:^8.52.0"
-    eslint-config-standard-with-typescript: "npm:^39.1.1"
-    eslint-plugin-react: "npm:^7.33.2"
-    http-server: "npm:^14.1.1"
-    jest: "npm:^29.7.0"
-    react: "npm:^18.2.0"
-    react-dom: "npm:^18.2.0"
-    react-router-dom: "npm:6.17.0"
-    typescript: "npm:^5.2.2"
-    vite: "npm:^4.5.1"
   languageName: unknown
   linkType: soft
 

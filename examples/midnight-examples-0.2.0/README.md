@@ -33,11 +33,25 @@ https://docs.midnight.network/develop/tutorial/using/proof-server
 ### Compiler
 1. Documentation: https://docs.midnight.network/develop/tutorial/building/
 
+### VSCode extension for compact
+1. Documentation: https://docs.midnight.network/relnotes/vs-code-extension
+
 ### Enter examples
 1. Git clone Mesh Midnight repository by: git clone https://github.com/MeshJS/midnight.git
 2. Go to midnight examples by: ```cd examples/midnight-examples-0.2.0```
 3. Node Documentation: https://github.com/nvm-sh/nvm#installing-and-updating
 4. Enable yarn by: ```corepack enable```
+
+### Build & Test Examples
+1. yarn
+2. npx turbo build
+3. Run Counter example as TestNetRemote
+4. Run Counter example as Standalone
+5. Run Bboard example as TestNetRemote
+6. Run Bboard example as Standalone
+7. Run Bboard UI as TestNetRemote
+
+
  
 
 
