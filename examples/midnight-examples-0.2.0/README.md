@@ -6,6 +6,12 @@ This is a multi-package repo containing example applications that are used to sh
 
 Details of the contents of this repository can be found in [Midnight documentation](https://docs.midnight.network/)
 
+## Youtube Tutorial
+
+- [Tutorial in english](https://www.youtube.com/watch?v=W03Hjqcc5vY)
+- [Tutorial in spanish](https://www.youtube.com/watch?v=yJcKTxtBNPA)
+- [Tutorial in Portuguese](https://www.youtube.com/watch?v=Y8bQ0Tme_JQ)
+
 ## Requirements for Windows
 
 ### WSL2
