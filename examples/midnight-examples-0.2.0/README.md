@@ -57,6 +57,13 @@ https://docs.midnight.network/develop/tutorial/using/proof-server
 6. Run Bboard example as Standalone
 7. Run Bboard UI as TestNetRemote
 
+### Knowledge
+- TurboRepo: https://turbo.build/
+- Monorepo & Workspaces: https://yarnpkg.com/features/workspaces
+
+
+
+
 
  
 
