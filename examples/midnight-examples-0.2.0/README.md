@@ -8,9 +8,9 @@ Details of the contents of this repository can be found in [Midnight documentati
 
 ## Youtube Tutorial
 
-- [Tutorial in english](https://www.youtube.com/watch?v=W03Hjqcc5vY)
-- [Tutorial in spanish](https://www.youtube.com/watch?v=yJcKTxtBNPA)
-- [Tutorial in Portuguese](https://www.youtube.com/watch?v=Y8bQ0Tme_JQ)
+- [Version in English](https://www.youtube.com/watch?v=W03Hjqcc5vY)
+- [Versión en español](https://www.youtube.com/watch?v=yJcKTxtBNPA)
+- [Versão em português](https://www.youtube.com/watch?v=Y8bQ0Tme_JQ)
 
 ## Requirements for Windows
 
@@ -34,7 +34,7 @@ Details of the contents of this repository can be found in [Midnight documentati
 1. Documentation: https://code.visualstudio.com/download
 
 ### Proof Server
-https://docs.midnight.network/develop/tutorial/using/proof-server
+1. https://docs.midnight.network/develop/tutorial/using/proof-server
 
 ### Compiler
 1. Documentation: https://docs.midnight.network/develop/tutorial/building/

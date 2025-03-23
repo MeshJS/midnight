@@ -1,10 +1,56 @@
 ---
-title: Midnight Examples
-description: Midnight examples
+title: Build & Run
+description: Build and run the Midnight examples repository
 asIndexPage: true
-sidebarTitle: Midnight Examples
+sidebarTitle: Build & Run
 ---
 
-# Midnight Examples 0.2.0
+## 📺 Video Walkthroughs – Build & Run Setup
+- [Version in English](https://www.youtube.com/watch?v=W03Hjqcc5vY)
+- [Versión en español](https://www.youtube.com/watch?v=yJcKTxtBNPA)
+- [Versão em português](https://www.youtube.com/watch?v=Y8bQ0Tme_JQ)
 
+## ✍️ Requirements for Windows
 
+### WSL2
+1. Documentation: https://learn.microsoft.com/en-us/windows/wsl/install 
+2. Install by:  ``` wsl --install ``` 
+3. Check your version by: ```wsl -l -v ```
+4. Check your current directory: ```wsl pwd```
+5. Open your default WSL distribution by: ```wsl```
+6. Confirm your distribution within WSL by: ```lsb_release -a```
+
+### Docker desktop
+1. Documentation: https://docs.docker.com/desktop/features/wsl/
+2. Install the executable by following the docs link
+3. Open Docker Desktop and make sure the WSL2 support is checked.
+
+### Lace Wallet
+1. Documentation: https://docs.midnight.network/develop/tutorial/using/chrome-ext
+
+### VS-Code
+1. Documentation: https://code.visualstudio.com/download
+
+### Proof Server
+1. Documentation: https://docs.midnight.network/develop/tutorial/using/proof-server
+
+### Compiler
+1. Documentation: https://docs.midnight.network/develop/tutorial/building/
+
+### VSCode extension for compact
+1. Documentation: https://docs.midnight.network/relnotes/vs-code-extension
+
+### Enter examples
+1. Git clone Mesh Midnight repository by: ```git clone https://github.com/MeshJS/midnight.git```
+2. Go to midnight examples by: ```cd examples/midnight-examples-0.2.0```
+3. NVM Documentation: https://github.com/nvm-sh/nvm#installing-and-updating
+4. Enable yarn by: ```corepack enable```
+
+### Build & Test Examples
+1. Install dependencies: ```yarn```
+2. Build the repo: ```npx turbo build```
+3. Run Counter example as TestNetRemote
+4. Run Counter example as Standalone
+5. Run Bboard example as TestNetRemote
+6. Run Bboard example as Standalone
+7. Run Bboard UI as TestNetRemote
