@@ -12,6 +12,9 @@ Details of the contents of this repository can be found in [Midnight documentati
 - [Versión en español](https://www.youtube.com/watch?v=yJcKTxtBNPA)
 - [Versão em português](https://www.youtube.com/watch?v=Y8bQ0Tme_JQ)
 
+## Docs
+- [Link to official Docs](https://midnight.meshjs.dev/en/examples/examples/0001)
+
 ## Requirements for Windows
 
 ### WSL2

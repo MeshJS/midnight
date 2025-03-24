@@ -1,0 +1,131 @@
+pragma language_version >= 0.14.0;
+
+import CompactStandardLibrary;
+
+export { Maybe };
+export { CoinInfo };
+export { ZswapCoinPublicKey };
+export { Certificate };
+
+export enum STATE { open, active, closed };
+
+struct Certificate {
+  age: Uint<64>,
+  aml: Boolean,
+  jurisdiction: Boolean,
+  owner: ZswapCoinPublicKey,
+  issuer: ZswapCoinPublicKey,
+  sk: Bytes<32>
+}
+
+witness local_secret_certificate(): Certificate;
+
+export sealed ledger reward_coin_color: Bytes<32>; 
+export sealed ledger admin_public_key: ZswapCoinPublicKey;
+export ledger registered_hashes: Map<Bytes<32>, Boolean>;
+
+export ledger state: STATE;
+export sealed ledger title: Opaque<"string">;
+export sealed ledger description: Opaque<"string">;
+export sealed ledger estimatedValue: Uint<128>;
+export sealed ledger deadline: Opaque<"string">;
+export sealed ledger image: Opaque<"string">;
+
+export ledger instance: Counter;
+export ledger highest_bidder: Maybe<ZswapCoinPublicKey>;
+export ledger highest_bid: Uint<128>; 
+export ledger treasury: QualifiedCoinInfo;
+export ledger treasury_balance: Uint<128>;
+
+constructor(token_address: ContractAddress, title_: Opaque<"string">, description_: Opaque<"string">, estimatedValue_: Uint<128>, deadline_: Opaque<"string">, image_: Opaque<"string">) {
+    state = STATE.open;
+    reward_coin_color = token_type(pad(32, "mesh_coin"), token_address);
+    admin_public_key = own_public_key();      
+    highest_bidder = none<ZswapCoinPublicKey>();
+    highest_bid = estimatedValue_;
+    treasury_balance = 0;
+
+    title = title_;
+    description = description_;
+    estimatedValue = estimatedValue_;
+    deadline = deadline_;
+    image = image_;    
+}
+
+//ADMIN CIRCUITS
+
+export circuit start_bid(): [] {
+  assert (admin_public_key == own_public_key()) "You are not the admin";
+  state = STATE.active;
+}
+
+export circuit close_bid(): [] {
+  assert (admin_public_key == own_public_key()) "You are not the admin";
+  state = STATE.closed;
+  if (treasury_balance != 0) {
+    send(treasury, left<ZswapCoinPublicKey, ContractAddress>(admin_public_key), treasury.value);     
+    treasury_balance = 0;       
+  }
+}
+
+//The admin will check offchain with the ID verifier to check for valid hashes. The admin will not have access to private information.
+//This process will later be automated with a cross contract communication with the ID verifier contract.
+export circuit approve_certificates(approved_hashes: Vector<10, Maybe<Bytes<32>>>): [] {
+  assert (admin_public_key == own_public_key()) "You are not the admin";
+  assert (state == STATE.open) "The auction is not open";
+  for (const maybe_hash of approved_hashes) {    
+    if (maybe_hash.is_some) {      
+      registered_hashes.insert(maybe_hash.value, true);
+    }
+  }
+}
+
+//USER CIRCUITS
+
+export circuit register(): [] {
+  assert (state == STATE.open) "The auction is not open";
+  const certificate = disclose(local_secret_certificate()); 
+
+  //conditions for registration:
+  //1. age > 18
+  assert (certificate.age > 18) "You must be over 18 to participate";
+  //2. AML compliance
+  assert (certificate.aml == true) "You must be AML compliance to participate";
+  //3. Jurisdiction compliance
+  assert (certificate.jurisdiction == true) "You must be jurisdiction compliance to participate";
+  //3. Only the owner of the certificate can register
+  assert (certificate.owner == own_public_key()) "You must be the owner of the certificate to register";
+
+  const registration_hash_ = registration_hash(certificate);  
+  registered_hashes.insert(registration_hash_, false);
+}
+
+export circuit make_bid(coin: CoinInfo): [] { 
+  assert (state == STATE.active) "The auction has not yet started"; 
+  const certificate = disclose(local_secret_certificate()); 
+  //Only the owner of the certificate can participate
+  assert (certificate.owner == own_public_key()) "You must be the owner of the certificate to bid";
+  assert (registered_hashes.member(registration_hash(certificate))) "You are not registered";
+  assert (registered_hashes.lookup(registration_hash(certificate)) == true) "Your registration is not approved";
+
+  receive(coin);
+  assert coin.color == reward_coin_color "Invalid coin provided"; 
+  assert coin.value > highest_bid "requires to be higher than previous bid";
+  if (treasury_balance == 0) {
+    treasury.write_coin(coin, right<ZswapCoinPublicKey, ContractAddress>(kernel.self()));
+    treasury_balance = coin.value;
+    highest_bid = coin.value;    
+    highest_bidder = some<ZswapCoinPublicKey>(certificate.owner);     
+  } else {
+    send(treasury, left<ZswapCoinPublicKey, ContractAddress>(highest_bidder.value), treasury.value);  
+    treasury.write_coin(coin, right<ZswapCoinPublicKey, ContractAddress>(kernel.self()));
+    treasury_balance = coin.value;
+    highest_bid = coin.value;
+    highest_bidder = some<ZswapCoinPublicKey>(certificate.owner);
+  }  
+}
+
+export circuit registration_hash(local_secret_certificate: Certificate): Bytes<32> {
+    return persistent_hash<Certificate>(local_secret_certificate);
+}
+
