@@ -6,3 +6,6 @@ Mesh Midnight provides tools, documentations, and education materials to remove 
 
 [midnight.meshjs.dev](https://midnight.meshjs.dev/)
 
+# When creating a new folder with React
+rm -rf node_modules package-lock.json
+npm install
