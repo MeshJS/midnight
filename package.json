@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
+    "build:packages": "turbo run build --filter=@meshsdk/*",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
@@ -19,6 +20,7 @@
   "packageManager": "npm@10.9.2",
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "example-workspaces/*"
   ]
 }
