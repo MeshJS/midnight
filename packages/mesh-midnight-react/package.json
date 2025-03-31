@@ -70,7 +70,7 @@
     "@radix-ui/react-dialog": "^1.1.6",
     "@radix-ui/react-dropdown-menu": "^2.1.6",   
     "@radix-ui/react-slot": "^1.1.2",    
-    "@radix-ui/react-tooltip": "^1.1.8"
+    "@radix-ui/react-tooltip": "^1.1.8"    
   },
   "prettier": "@meshsdk/configs/prettier",
   "publishConfig": {
