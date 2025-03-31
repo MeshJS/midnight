@@ -8,10 +8,8 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "dependencies": {
-    "@meshsdk/midnight-core": "*",
-    "@meshsdk/midnight-react": "*",
-    "@meshsdk/midnight-wallet": "*",
+  "dependencies": {    
+    "@meshsdk/midnight-react": "*",    
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.484.0",
