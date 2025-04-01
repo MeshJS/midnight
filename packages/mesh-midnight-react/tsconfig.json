@@ -4,6 +4,9 @@
   "exclude": ["node_modules", "dist"],
   "compilerOptions": {
     "jsx": "react-jsx",
-    "esModuleInterop": true,
+    "esModuleInterop": true,    
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "node",
   }
 }

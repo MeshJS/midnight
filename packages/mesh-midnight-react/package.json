@@ -27,11 +27,12 @@
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
     "pack": "npm pack --pack-destination=./dist",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "prepack:all": "npm run clean && npm install && npm run build && npm run pack"
   },
   "dependencies": {  
-    "@meshsdk/midnight-core": "*",
-    "@meshsdk/midnight-wallet": "*",
+    "@meshsdk/midnight-core": "0.1.0",
+    "@meshsdk/midnight-wallet": "0.1.0",
     "@midnight-ntwrk/compact-runtime": "0.7.0",
     "@midnight-ntwrk/dapp-connector-api": "1.2.2",
     "@midnight-ntwrk/ledger": "3.0.2",
@@ -53,11 +54,14 @@
     "rxjs": "^7.8.1",  
     "class-variance-authority": "^0.7.1",
     "tailwind-merge": "^2.6.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "@radix-ui/react-dialog": "^1.1.6",
+    "@radix-ui/react-dropdown-menu": "^2.1.6",   
+    "@radix-ui/react-slot": "^1.1.2",    
+    "@radix-ui/react-tooltip": "^1.1.8" 
   },
   "devDependencies": {
-    "@meshsdk/configs": "*",    
-    "@types/react": "^18.2.61",
+    "@meshsdk/configs": "*",      
     "autoprefixer": "^10.4.18",
     "concurrently": "^8.0.1",
     "postcss": "^8.4.35",
@@ -66,11 +70,9 @@
   },
   "peerDependencies": {
     "react": ">=16.0.0 <20.0.0 || >=16.0.0-rc <20.0.0-rc || >=19.0.0-rc",
-    "react-dom": ">=16.0.0 <20.0.0 || >=16.0.0-rc <20.0.0-rc || >=19.0.0-rc",    
-    "@radix-ui/react-dialog": "^1.1.6",
-    "@radix-ui/react-dropdown-menu": "^2.1.6",   
-    "@radix-ui/react-slot": "^1.1.2",    
-    "@radix-ui/react-tooltip": "^1.1.8"    
+    "react-dom": ">=16.0.0 <20.0.0 || >=16.0.0-rc <20.0.0-rc || >=19.0.0-rc", 
+    "@types/react": "*",
+    "@types/react-dom": "*"       
   },
   "prettier": "@meshsdk/configs/prettier",
   "publishConfig": {

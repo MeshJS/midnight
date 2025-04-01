@@ -15,6 +15,15 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "clean": {
+      "dependsOn": ["^clean"],
+      "cache": false
+    },
+    "prepack:all": {
+      "dependsOn": ["^prepack:all"],
+      "outputs": ["dist/*.tgz"],
+      "cache": false
     }
   }
 }

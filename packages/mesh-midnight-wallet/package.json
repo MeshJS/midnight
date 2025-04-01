@@ -26,11 +26,12 @@
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
     "pack": "npm pack --pack-destination=./dist",
-    "test": "jest"
+    "test": "jest",
+    "prepack:all": "npm run clean && npm install && npm run build && npm run pack"
   },
   "devDependencies": {
     "@meshsdk/configs": "*",
-    "@meshsdk/midnight-core": "*",
+    "@meshsdk/midnight-core": "0.1.0",
     "eslint": "^8.57.0",
     "tsup": "^8.0.2",
     "typedoc": "^0.26.3",

@@ -26,7 +26,8 @@
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
     "pack": "npm pack --pack-destination=./dist",
-    "test": "jest"
+    "test": "jest",
+    "prepack:all": "npm run clean && npm install && npm run build && npm run pack"
   },
   "devDependencies": {
     "@meshsdk/configs": "*",

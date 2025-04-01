@@ -4,7 +4,9 @@
   "scripts": {
     "build": "turbo run build",
     "build:packages": "turbo run build --filter=@meshsdk/*",
-    "clean": "rm -rf node_modules && rm -rf dist && rm -rf .turbo && rm -rf .next && rm -rf package-lock.json", 
+    "clean": "rm -rf node_modules && rm -rf dist && rm -rf .turbo && rm -rf .next && rm -rf package-lock.json",
+    "clean:packages": "turbo run clean --filter=@meshsdk/*",
+    "prepack:packages": "turbo run prepack:all --filter=@meshsdk/*",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
@@ -18,7 +20,7 @@
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "npm@10.9.2", 
+  "packageManager": "npm@10.9.2",
   "workspaces": [
     "apps/*",
     "packages/*",

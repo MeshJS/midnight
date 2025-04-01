@@ -6,10 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean": "rm -rf node_modules package-lock.json .next"
   },
-  "dependencies": {
-    "@meshsdk/midnight-react": "file:../../packages/mesh-midnight-react/meshsdk-midnight-react-0.1.0.tgz",
+  "dependencies": {   
+    "@meshsdk/midnight-react": "*",
     "next": "15.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
