@@ -1,6 +1,6 @@
 {
   "name": "@meshsdk/midnight-core",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Core",
   "main": "./dist/index.cjs",
   "browser": "./dist/index.js",
@@ -18,7 +18,6 @@
     "dist/**"
   ],
   "scripts": {
-    "build:docs": "typedoc src/index.ts --json ../../apps/docs/src/data/mesh-wallets.json",
     "build:mesh": "tsup src/index.ts --format esm,cjs --dts",
     "build": "npm run build:mesh",
     "clean": "rm -rf .turbo && rm -rf dist && rm -rf node_modules",
@@ -26,7 +25,8 @@
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
     "pack": "npm pack --pack-destination=./dist",
-    "test": "jest"
+    "test": "jest",
+    "prepack:all": "npm run clean && npm install && npm run build && npm run pack"
   },
   "devDependencies": {
     "@meshsdk/configs": "*",

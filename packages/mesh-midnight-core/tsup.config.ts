@@ -5,6 +5,5 @@ export default defineConfig({
   format: ['esm', 'cjs'],
   dts: true,  
   clean: true, 
-  skipNodeModulesBundle: true,
-  external: ['react', 'react-dom', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu', '@radix-ui/react-slot', '@radix-ui/react-tooltip'],  
+  skipNodeModulesBundle: true,  
 });

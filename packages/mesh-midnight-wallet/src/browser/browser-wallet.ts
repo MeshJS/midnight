@@ -1,7 +1,7 @@
 import type { CoinInfo } from '@midnight-ntwrk/ledger';
 import { DAppConnectorAPI, DAppConnectorWalletAPI, ServiceUriConfig } from '@midnight-ntwrk/dapp-connector-api';
 import { Transaction } from '@midnight-ntwrk/zswap';
-import { pipe as fnPipe } from 'fp-ts/function';
+import { pipe as fnPipe } from 'fp-ts/lib/function.js';
 import { type Logger } from 'pino';
 import { catchError, concatMap, filter, firstValueFrom, interval, map, of, take, tap, throwError, timeout } from 'rxjs';
 import { checkProofServerStatus } from '@meshsdk/midnight-core';

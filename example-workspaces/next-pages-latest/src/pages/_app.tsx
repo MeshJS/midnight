@@ -1,12 +1,22 @@
 import "@/styles/globals.css";
-import "@meshsdk/react/styles.css";
 import type { AppProps } from "next/app";
-import { MeshProvider } from "@meshsdk/react";
+import { MidnightMeshProvider } from "@meshsdk/midnight-react";
+import "@meshsdk/midnight-react/styles.css";
+import * as pino from "pino";
+import { CardanoWallet } from "@meshsdk/midnight-react";
+
+export const logger = pino.pino({
+  level: "trace",
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <MeshProvider>
-      <Component {...pageProps} />
-    </MeshProvider>
+    <>
+      <MidnightMeshProvider logger={logger}>
+        <CardanoWallet />
+        <Component {...pageProps} />
+      </MidnightMeshProvider>
+    </>
   );
 }
+

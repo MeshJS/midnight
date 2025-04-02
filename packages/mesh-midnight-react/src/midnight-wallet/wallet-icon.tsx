@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {
   Tooltip,
   TooltipContent,  
@@ -23,7 +22,7 @@ export default function WalletIcon({
           className="mesh-flex mesh-items-center mesh-justify-center mesh-rounded-lg mesh-w-10 mesh-h-10 mesh-bg-neutral-50 mesh-border mesh-border-zinc-700 hover:mesh-border-zinc-200 mesh-cursor-pointer"
           onClick={action}
         >
-          {icon && <Image src={icon} alt={name} className="mesh-w-8 mesh-h-8"/>}
+          {icon && <img src={icon} alt={name} className="mesh-w-8 mesh-h-8"/>}
           {iconReactNode && iconReactNode}
         </button>
       </TooltipTrigger>

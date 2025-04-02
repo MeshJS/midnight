@@ -6,10 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean": "rm -rf node_modules package-lock.json .next"
   },
-  "dependencies": {    
-    "@meshsdk/midnight-react": "*",    
+  "dependencies": {
+    "@meshsdk/midnight-react": "0.1.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.484.0",
