@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "build": "turbo run build:mesh && turbo run build:apps",
-    "build:packages": "turbo run build --filter=@meshsdk/*",
+    "build:apps": "turbo run build:apps",
+    "build:mesh": "turbo run build:mesh",
     "clean": "rm -rf node_modules && rm -rf dist && rm -rf .turbo && rm -rf .next && rm -rf package-lock.json",
     "clean:packages": "turbo run clean --filter=@meshsdk/*",
     "prepack:packages": "turbo run prepack:all --filter=@meshsdk/*",
