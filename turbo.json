@@ -3,8 +3,16 @@
   "ui": "tui",
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**", "!.next/cache/**", ".next/**"]
+      "dependsOn": ["^build:mesh", "^build:apps"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+    },
+    "build:apps": {
+      "dependsOn": ["^build:mesh", "^build:apps"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+    },
+    "build:mesh": {
+      "dependsOn": ["^build:mesh"],
+      "outputs": ["dist/**"]
     },
     "lint": {
       "dependsOn": ["^lint"]
