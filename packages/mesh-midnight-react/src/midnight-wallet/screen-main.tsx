@@ -1,4 +1,5 @@
 import IconMonitorSmartphone from '../common/icons/icon-monitor-smartphone';
+import IconLace from '../common/icons/icon-lace';
 
 import { TooltipProvider } from '../common/tooltip';
 import { useWallet, useWalletList } from '../hooks';
@@ -19,7 +20,7 @@ export default function ScreenMain({
         {wallets.map((wallet, index) => (
           <WalletIcon
             key={index}
-            iconReactNode={<IconMonitorSmartphone />}
+            iconReactNode={<IconLace />}
             name={wallet.name == "mnLace" ? "LACE" : "UNDEFINED"}
             action={() => {
               connectWallet(wallet.name);

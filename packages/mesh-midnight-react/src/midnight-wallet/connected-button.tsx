@@ -21,7 +21,7 @@ export default function ConnectedButton() {
                 navigator.clipboard.writeText(address);
               }}
             >
-              Copy Address
+              Copy Address3
             </DropdownMenuItem>
             <DropdownMenuItem
               className="mesh-text-[16px] mesh-text-[#0E1B2E] mesh-cursor-pointer"

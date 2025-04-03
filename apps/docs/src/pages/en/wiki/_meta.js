@@ -16,4 +16,8 @@ export default {
     title: "Smart Contracts Lib",
     route: "/3_smart_contracts_lib",
   },
+  "4_wallet_widget": {
+    title: "Wallet widget",
+    route: "/4_wallet_widget",
+  },
 };

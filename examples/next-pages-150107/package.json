@@ -10,9 +10,9 @@
     "clean": "rm -rf node_modules package-lock.json .next"
   },
   "dependencies": {
-    "@meshsdk/midnight-react": "../../packages/mesh-midnight-react/dist/meshsdk-midnight-react-0.1.0.tgz",
-    "@meshsdk/midnight-core": "../../packages/mesh-midnight-core/dist/meshsdk-midnight-core-0.1.0.tgz",
-    "@meshsdk/midnight-wallet": "../../packages/mesh-midnight-wallet/dist/meshsdk-midnight-wallet-0.1.0.tgz",
+    "@meshsdk/midnight-react": "../../packages/mesh-midnight-react/dist/meshsdk-midnight-react-0.0.1.tgz",
+    "@meshsdk/midnight-core": "../../packages/mesh-midnight-core/dist/meshsdk-midnight-core-0.0.1.tgz",
+    "@meshsdk/midnight-wallet": "../../packages/mesh-midnight-wallet/dist/meshsdk-midnight-wallet-0.0.1.tgz",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.484.0",
