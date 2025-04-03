@@ -10,6 +10,7 @@ sidebarTitle: Wallet Widget
 import { MidnightMeshProvider, CardanoWallet } from "@meshsdk/midnight-react";
 import * as pino from "pino";
 import "@meshsdk/midnight-react/styles.css";
+import { Button } from "@/components/ui/button"
 
 export function Wallet() {
   const logger = pino.pino({
@@ -22,4 +23,13 @@ export function Wallet() {
   );
 }
 
+export default function Home() {
+  return (
+    <div>
+      <Button>Click me</Button>
+    </div>
+  )
+}
+
 <Wallet />
+<Home />
