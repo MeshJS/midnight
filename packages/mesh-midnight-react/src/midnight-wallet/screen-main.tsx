@@ -1,6 +1,4 @@
-import IconMonitorSmartphone from '../common/icons/icon-monitor-smartphone';
 import IconLace from '../common/icons/icon-lace';
-
 import { TooltipProvider } from '../common/tooltip';
 import { useWallet, useWalletList } from '../hooks';
 import WalletIcon from './wallet-icon';
@@ -16,7 +14,8 @@ export default function ScreenMain({
 
   return (
     <TooltipProvider>
-      <div className="mesh-grid mesh-gap-4 mesh-py-4 mesh-grid-cols-5 mesh-place-items-center mesh-gap-y-8">
+      <div className="mesh-grid mesh-gap-4 mesh-py-7 mesh-place-items-center mesh-gap-y-8"
+      style={{ gridTemplateColumns: `repeat(${wallets.length}, minmax(0, 1fr))` }}>
         {wallets.map((wallet, index) => (
           <WalletIcon
             key={index}

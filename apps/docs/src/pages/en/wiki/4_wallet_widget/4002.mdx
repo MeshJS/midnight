@@ -17,7 +17,10 @@ export function Wallet() {
   });
   return (
     <MidnightMeshProvider logger={logger}>
-      <CardanoWallet />      
+    <div className="mt-5">
+    <CardanoWallet /> 
+    </div>
+           
     </MidnightMeshProvider>
   );
 }

@@ -75,4 +75,5 @@ export default {
     ),
   },
   i18n: [{ locale: "en", name: "English" }],
+  darkMode: true
 };

@@ -4,6 +4,8 @@ import { MidnightMeshProvider } from "@meshsdk/midnight-react";
 import "@meshsdk/midnight-react/styles.css";
 import * as pino from "pino";
 import { CardanoWallet } from "@meshsdk/midnight-react";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+// import { CardanoWallet } from "@/components/wallet-widget/midnight-wallet";
 
 export const logger = pino.pino({
   level: "trace",
@@ -12,10 +14,17 @@ export const logger = pino.pino({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <MidnightMeshProvider logger={logger}>
-        <CardanoWallet />
-        <Component {...pageProps} />
-      </MidnightMeshProvider>
+      <NextThemesProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        <MidnightMeshProvider logger={logger}>
+          <CardanoWallet />
+          <Component {...pageProps} />
+        </MidnightMeshProvider>
+      </NextThemesProvider>
     </>
   );
 }

@@ -1,6 +1,6 @@
 export default function IconLace() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="173.777" height="175.055" viewBox="0 0 173.777 175.055">
+    <svg xmlns="http://www.w3.org/2000/svg" width="35" viewBox="0 0 173.777 175.055">
     <defs>
       <radialGradient id="radial-gradient" cx="0.5" cy="0.5" r="0.506" gradientTransform="translate(-0.004) scale(1.007 1)" gradientUnits="objectBoundingBox">
         <stop offset="0.47" stop-color="#feb14f"/>

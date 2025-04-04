@@ -1,24 +1,25 @@
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
+import type { VariantProps } from "class-variance-authority";
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { cva } from "class-variance-authority";
 
-import { cn } from "./cn"
+import { cn } from "./cn";
 
 const buttonVariants = cva(
-  "mesh-inline-flex mesh-items-center mesh-justify-center mesh-gap-2 mesh-whitespace-nowrap mesh-rounded-md mesh-text-sm mesh-font-medium mesh-transition-colors focus-visible:mesh-outline-none disabled:mesh-pointer-events-none disabled:mesh-opacity-50 [&_svg]:mesh-pointer-events-none [&_svg]:mesh-size-4 [&_svg]:mesh-shrink-0",
+  "mesh-inline-flex mesh-items-center mesh-justify-center mesh-gap-2 mesh-whitespace-nowrap mesh-rounded-md mesh-text-sm mesh-font-medium mesh-transition-colors mesh-focus-visible:outline-none mesh-focus-visible:ring-1 mesh-focus-visible:ring-ring mesh-disabled:pointer-events-none mesh-disabled:opacity-50 [&_svg]:mesh-pointer-events-none [&_svg]:mesh-size-4 [&_svg]:mesh-shrink-0",
   {
     variants: {
       variant: {
         default:
-          "mesh-bg-primary mesh-text-primary-foreground mesh-shadow hover:mesh-bg-primary/90",
+          "mesh-bg-primary mesh-text-primary-foreground mesh-shadow mesh-hover:bg-primary/90",
         destructive:
-          "mesh-bg-destructive mesh-text-destructive-foreground mesh-shadow-sm hover:mesh-bg-destructive/90",
+          "mesh-bg-destructive mesh-text-destructive-foreground mesh-shadow-sm mesh-hover:bg-destructive/90",
         outline:
-          "mesh-border mesh-border-input mesh-bg-background mesh-shadow-sm hover:mesh-bg-accent hover:mesh-text-accent-foreground",
+          "mesh-border mesh-border-input mesh-bg-background mesh-shadow-sm mesh-hover:bg-accent mesh-hover:text-accent-foreground",
         secondary:
-          "mesh-bg-secondary mesh-text-secondary-foreground mesh-shadow-sm hover:mesh-bg-secondary/80",
-        ghost: "hover:mesh-bg-accent hover:mesh-text-accent-foreground",
-        link: "mesh-text-primary mesh-underline-offset-4 hover:mesh-underline",
+          "mesh-bg-secondary mesh-text-secondary-foreground mesh-shadow-sm mesh-hover:bg-secondary/80",
+        ghost: "mesh-hover:bg-accent mesh-hover:text-accent-foreground",
+        link: "mesh-text-primary mesh-underline-offset-4 mesh-hover:underline",
       },
       size: {
         default: "mesh-h-9 mesh-px-4 mesh-py-2",
@@ -31,27 +32,27 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
-)
+  },
+);
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  asChild?: boolean
+  asChild?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
+    const Comp = asChild ? Slot : "button";
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         {...props}
       />
-    )
-  }
-)
-Button.displayName = "Button"
+    );
+  },
+);
+Button.displayName = "Button";
 
-export { Button, buttonVariants }
+export { Button, buttonVariants };

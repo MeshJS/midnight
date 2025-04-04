@@ -1,4 +1,3 @@
-import IconMonitorSmartphone from '../icons/icon-monitor-smartphone';
 import IconLace from '../icons/icon-lace';
 
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -16,7 +15,9 @@ export default function ScreenMain({
 
   return (
     <TooltipProvider>
-      <div className="mesh-grid mesh-gap-4 mesh-py-4 mesh-grid-cols-5 mesh-place-items-center mesh-gap-y-8">
+      <div 
+      className="grid gap-4 py-7 place-items-center gap-y-8"
+      style={{ gridTemplateColumns: `repeat(${wallets.length}, minmax(0, 1fr))` }}>
         {wallets.map((wallet, index) => (
           <WalletIcon
             key={index}

@@ -26,7 +26,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
     ref={ref}
     className={cn(
       "mesh-flex mesh-cursor-default mesh-gap-2 mesh-select-none mesh-items-center mesh-rounded-sm mesh-px-2 mesh-py-1.5 mesh-text-sm mesh-outline-none focus:mesh-bg-accent data-[state=open]:mesh-bg-accent [&_svg]:mesh-pointer-events-none [&_svg]:mesh-size-4 [&_svg]:mesh-shrink-0",
-      inset && "pl-8",
+      inset && "mesh-pl-8",
       className
     )}
     {...props}

@@ -1,6 +1,6 @@
 {
   "name": "@meshsdk/midnight-react",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React component library ",
   "main": "./dist/index.cjs",
   "browser": "./dist/index.js",
