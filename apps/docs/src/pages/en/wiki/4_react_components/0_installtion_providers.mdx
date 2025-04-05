@@ -1,0 +1,67 @@
+---
+title: Installation and providers
+description: Configuring provider
+asIndexPage: true
+sidebarTitle: Installation and providers
+---
+
+# Installation and providers
+
+Frontend components for wallet connections, and useful React hooks to getting wallet states.
+
+Mesh provide a collection of useful UI components, so you can easily include web3 functionality and convenient utilities for your application.
+
+## Setup
+
+Install the Mesh React package, run the following:
+
+```sh npm2yarn copy
+npm install @meshsdk/midnight-react
+```
+
+Next, add the Mesh CSS to your application, doing so will apply the default styles to the components. You can add this in /pages/\_app.tsx.
+
+```js filename="/pages/_app.tsx" copy
+import "@meshsdk/midnight-react/styles.css";
+```
+
+## Midnight Mesh Provider
+
+React Context allows apps to share data across the app, and MidnightMeshProvider allows your app to subscribe to context changes. You can wrap MidnightMeshProvider at the root of your application, for example in Next.js:
+
+```js filename="/pages/_app.tsx" copy
+import type { AppProps } from "next/app";
+import { MidnightMeshProvider } from "@meshsdk/midnight-react";
+import "@meshsdk/midnight-react/styles.css";
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <MidnightMeshProvider>
+      <Component {...pageProps} />
+    </MidnightMeshProvider>
+  );
+}
+```
+
+You may optionally provide a logger to track wallet actions and events. If not required, it can be omitted as demonstrated above.
+
+```js filename="/pages/_app.tsx" copy
+import type { AppProps } from "next/app";
+import { MidnightMeshProvider } from "@meshsdk/midnight-react";
+import "@meshsdk/midnight-react/styles.css";
+import * as pino from "pino";
+
+export default function App({ Component, pageProps }: AppProps) {
+  export const logger = pino.pino({
+  level: "trace",
+  });
+
+  return (
+    <MidnightMeshProvider logger={logger}>
+      <Component {...pageProps} />
+    </MidnightMeshProvider>
+  );
+}
+```
+
+Now your application is ready, explore the available UI components and wallet hooks and start using them in your application.
