@@ -13,7 +13,7 @@ import ConnectedButton from './connected-button';
 import { screens } from './data';
 import ScreenMain from './screen-main';
 
-export const CardanoWallet = () => {  
+export const MidnightWallet = () => {  
   const { open, setOpen } = useWallet();
   const [screen, setScreen] = useState('main');
   const { hasConnectedWallet } = useAssets();

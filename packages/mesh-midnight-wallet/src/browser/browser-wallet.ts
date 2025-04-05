@@ -23,8 +23,7 @@ export class MidnightBrowserWallet {
   _encryptionPublicKey: string | undefined;
   _proofServerOnline: boolean;
 
-  private constructor(
-    readonly logger: Logger,
+  private constructor(    
     connectorAPI: DAppConnectorAPI,
     walletInstance: DAppConnectorWalletAPI,
     walletName: string,
@@ -33,6 +32,7 @@ export class MidnightBrowserWallet {
     coinPublicKey: string,
     encryptionPublicKey: string,
     proofServerOnline: boolean,
+    readonly logger?: Logger,
   ) {
     this._walletInstance = walletInstance;
     this._walletName = walletName;
@@ -41,6 +41,7 @@ export class MidnightBrowserWallet {
     this._coinPublicKey = coinPublicKey;
     this._encryptionPublicKey = encryptionPublicKey;
     this._proofServerOnline = proofServerOnline;
+    this.logger = logger;
   }
 
   static getAvailableWallets(): DAppConnectorAPI[] {
@@ -86,7 +87,7 @@ export class MidnightBrowserWallet {
     window.localStorage.removeItem('walletName-connected');
   }
 
-  static async connectToWallet(walletName: string, logger: Logger): Promise<MidnightBrowserWallet> {
+  static async connectToWallet(walletName: string, logger?: Logger): Promise<MidnightBrowserWallet> {
     const COMPATIBLE_CONNECTOR_API_VERSION = '1.x';
 
     return firstValueFrom(
@@ -94,18 +95,18 @@ export class MidnightBrowserWallet {
         interval(100),
         map(() => window.midnight?.[walletName]),
         tap((connectorAPI) => {
-          logger.info(connectorAPI, 'Check for wallet connector API');
+          logger?.info(connectorAPI, 'Check for wallet connector API');
         }),
         filter((connectorAPI): connectorAPI is DAppConnectorAPI => !!connectorAPI),      
         tap((connectorAPI) => {
-          logger.info(connectorAPI, 'Compatible wallet connector API found. Connecting.');
+          logger?.info(connectorAPI, 'Compatible wallet connector API found. Connecting.');
         }),
         take(1),
         timeout({
           first: 1_000,
           with: () =>
             throwError(() => {
-              logger.error('Could not find wallet connector API');
+              logger?.error('Could not find wallet connector API');
 
               return new Error('Could not find Midnight Lace wallet. Extension installed?');
             }),
@@ -113,7 +114,7 @@ export class MidnightBrowserWallet {
         concatMap(async (connectorAPI) => {
           const isEnabled = await connectorAPI.isEnabled();
 
-          logger.info(isEnabled, 'Wallet connector API enabled status');
+          logger?.info(isEnabled, 'Wallet connector API enabled status');
 
           return connectorAPI;
         }),
@@ -121,7 +122,7 @@ export class MidnightBrowserWallet {
           first: 5_000,
           with: () =>
             throwError(() => {
-              logger.error('Wallet connector API has failed to respond');
+              logger?.error('Wallet connector API has failed to respond');
 
               return new Error('Midnight Lace wallet has failed to respond. Extension enabled?');
             }),
@@ -133,7 +134,7 @@ export class MidnightBrowserWallet {
         catchError((error, apis) =>
           error
             ? throwError(() => {
-                logger.error('Unable to enable connector API');
+                logger?.error('Unable to enable connector API');
                 return new Error('Application is not authorized');
               })
             : apis,
@@ -143,10 +144,9 @@ export class MidnightBrowserWallet {
           const { address, coinPublicKey, encryptionPublicKey } = await walletConnectorAPI.state();
           const proofServerOnline = await checkProofServerStatus(uris.proverServerUri);
 
-          logger.info('Connected to wallet connector API and retrieved service configuration');
+          logger?.info('Connected to wallet connector API and retrieved service configuration');
 
-          const wallet = new MidnightBrowserWallet(
-            logger,
+          const wallet = new MidnightBrowserWallet(            
             connectorAPI,
             walletConnectorAPI,
             walletName,
@@ -155,6 +155,7 @@ export class MidnightBrowserWallet {
             coinPublicKey,
             encryptionPublicKey,
             proofServerOnline,
+            logger,
           );
 
           // Call the static method

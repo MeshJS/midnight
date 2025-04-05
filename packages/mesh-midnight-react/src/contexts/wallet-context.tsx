@@ -51,7 +51,7 @@ export interface WalletContext {
   isProofServerOnline: boolean;
 }
 
-export const useWalletStore = (logger: Logger): WalletContext => {
+export const useWalletStore = (logger?: Logger): WalletContext => {
   const [open, setOpen] = useState(false);
   const [error, setError] = useState<any | undefined>(undefined);
   const [state, setState] = useState<WalletState>(WalletState.NOT_CONNECTED);
