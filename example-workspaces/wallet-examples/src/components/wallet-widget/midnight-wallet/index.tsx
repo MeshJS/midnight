@@ -39,7 +39,7 @@ export const CardanoWallet = () => {
   );
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
+// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-unsafe-function-type
 function Header({ screen, setScreen }: { screen: string; setScreen: Function }) {
   return (
     <DialogHeader>
