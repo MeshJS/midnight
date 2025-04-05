@@ -1,4 +1,5 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../common/dropdown-menu';
+import { Button } from '../common/button';
 import { useAssets, useWallet } from '../hooks';
 
 export default function ConnectedButton() {
@@ -10,13 +11,13 @@ export default function ConnectedButton() {
       {address && (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <button className="mesh-border mesh-border-[#0E1B2E] mesh-rounded-[3px] mesh-w-[140px] mesh-py-1.5 mesh-text-[16px]">
+            <Button variant="outline">
               {address.slice(0, 4)}...{address.slice(-4)}
-            </button>
+            </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className={`mesh-rounded-[3px] mesh-w-[140px] `}>
+          <DropdownMenuContent align="start">
             <DropdownMenuItem
-              className="mesh-text-[16px] mesh-text-[#0E1B2E] mesh-cursor-pointer"
+              className="mesh-cursor-pointer"
               onClick={() => {
                 navigator.clipboard.writeText(address);
               }}
@@ -24,7 +25,7 @@ export default function ConnectedButton() {
               Copy Address
             </DropdownMenuItem>
             <DropdownMenuItem
-              className="mesh-text-[16px] mesh-text-[#0E1B2E] mesh-cursor-pointer"
+              className="mesh-cursor-pointer"
               onClick={() => {
                 disconnect();
               }}

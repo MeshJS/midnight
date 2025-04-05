@@ -1,0 +1,27 @@
+---
+title: Wallet Widget
+description: Wallet UI interface
+asIndexPage: true
+sidebarTitle: Wallet Widget
+---
+
+# Wallet Widget
+
+import { MidnightMeshProvider, CardanoWallet } from "@meshsdk/midnight-react";
+import * as pino from "pino";
+import "@meshsdk/midnight-react/styles.css";
+
+export function Wallet() {
+  const logger = pino.pino({
+    level: "trace",
+  });
+  return (
+    <MidnightMeshProvider logger={logger}>
+      <div className="mt-5">
+      <CardanoWallet />
+      </div>
+    </MidnightMeshProvider>
+  );
+}
+
+<Wallet />
