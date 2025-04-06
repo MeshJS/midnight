@@ -1,6 +1,6 @@
 {
   "name": "@meshsdk/midnight-react",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React component library ",
   "main": "./dist/index.cjs",
   "browser": "./dist/index.js",
@@ -29,8 +29,8 @@
     "prepack:all": "npm run clean && npm install && npm run build && npm run pack"
   },
   "dependencies": {  
-    "@meshsdk/midnight-core": "*",
-    "@meshsdk/midnight-wallet": "*",
+    "@meshsdk/midnight-core": "0.0.3",
+    "@meshsdk/midnight-wallet": "0.0.3",
     "@midnight-ntwrk/compact-runtime": "0.7.0",
     "@midnight-ntwrk/dapp-connector-api": "1.2.2",
     "@midnight-ntwrk/ledger": "3.0.2",
