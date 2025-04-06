@@ -5,25 +5,206 @@ asIndexPage: true
 sidebarTitle: Wallet Hooks
 ---
 
+import { Callout } from "nextra/components";
+import { Table, Td, Th, Tr } from 'nextra/components'
+
 # Wallet Hooks
+
 React hooks for interacting with connected wallets.
 
 React Hooks allow function components to have access to state and other React features. With Mesh Hooks, you can easily interact and access wallet data.
 
 ##### useAssets Hook
 
-##### useWallets Hook
+```js copy
+import { useAssets } from "@meshsdk/midnight-react";
 
-##### useWalletBalanceProve Hook
+export default function Home() {
+  const {
+    address,
+    coinPublicKey,
+    encryptionPublicKey,
+    hasConnectedWallet,
+    isProofServerOnline,
+    uris,
+    walletName,
+  } = useAssets();
+
+  return (
+    <div>
+      <div>Wallet Name: {walletName}</div>
+      <div>Address: {address}</div>
+      <div>Coin Public Key: {coinPublicKey}</div>
+      <div>Encryption Public Key: {encryptionPublicKey}</div>
+      <div>Has Connected Wallet: {hasConnectedWallet ? "Yes" : "No"}</div>
+      <div>Is Proof Server Online: {isProofServerOnline ? "Yes" : "No"}</div>
+      <div>Indexer: {uris?.indexerUri}</div>
+      <div>IndexerWS: {uris?.indexerWsUri}</div>
+      <div>Proof Server: {uris?.proverServerUri}</div>
+      <div>Node: {uris?.substrateNodeUri}</div>
+    </div>
+  );
+}
+```
+
+<Callout type="info" emoji="ℹ️">
+Output and function signatures
+</Callout>
+
+<Table>  
+  <tbody>
+    <Tr>
+      <Td>Wallet Name</Td>
+      <Td>mnLace</Td>
+    </Tr>
+    <Tr>
+      <Td>Address</Td>
+      <Td>feff6534cae3d59e03275b299f2cd052e02e2084cfd63c4fff2568971c1343e|0300aa6a2d2ed980354bc5f14d595e6b6d8bd740bb99e9115c167c357e2b52865cb808f54d5ce551b5d79df33bb3878baaba5aa8a1be4d510b88</Td>
+    </Tr>
+     <Tr>
+      <Td>Coin Public Key</Td>
+      <Td>5feff6534cae3d59e03275b299f2cd052e02e2084cfd63c4fff2568971c1343e</Td>
+    </Tr>
+     <Tr>
+      <Td>Encryption Public Key</Td>
+      <Td>0300aa6a2d2ed980354bc5f14d595e6b6d8bd740bb99e9115c167c357e2b52865cb808f54d5ce551b5d79df33bb3878baaba5aa8a1be4d510b88</Td>
+    </Tr>
+     <Tr>
+      <Td>Has Connected Wallet</Td>
+      <Td>Boolean (true or false)</Td>
+    </Tr>
+     <Tr>
+      <Td>Is Proof Server Online</Td>
+      <Td>Boolean (true or false)</Td>
+    </Tr>
+     <Tr>
+      <Td>Indexer</Td>
+      <Td>http://localhost:8088/api/v1/graphql</Td>
+    </Tr>
+     <Tr>
+      <Td>IndexerWS</Td>
+      <Td>ws://localhost:8088/api/v1/graphql/ws</Td>
+    </Tr>
+     <Tr>
+      <Td>Proof Server</Td>
+      <Td>http://localhost:6300</Td>
+    </Tr>
+     <Tr>
+      <Td>Node</Td>
+      <Td>http://localhost:9944</Td>
+    </Tr>
+  </tbody>
+</Table>
+
+##### useWallet Hook
+```js copy
+import { useWallet } from "@meshsdk/midnight-react";
+
+export default function Home() {
+   const { connectingWallet, disconnect, setOpen, connectWallet } = useWallet();
+
+  return (
+    <div>
+        <div>Connecting Wallet: {connectingWallet? "Yes" : "No"}</div>
+        <div onClick={disconnect}>Disconnect Wallet</div>
+        <div onClick={() => setOpen(true)}>Open Wallet Dialog</div>
+        <div onClick={() => connectWallet("mnLace")}>Connect to the Lace Wallet</div>
+    </div>
+  );
+}
+```
+
+<Callout type="info" emoji="ℹ️">
+Output and function signatures
+</Callout>
+
+<Table>  
+  <tbody>
+    <Tr>
+      <Td>Connecting Wallet</Td>
+      <Td>Boolean (true or false)</Td>
+    </Tr>       
+  </tbody>
+</Table>
+```js filename="Disconnect Wallet" 
+const disconnect: () => void
+```
+
+```js filename="Open Wallet Dialog"
+const setOpen: (value: boolean) => void
+```
+
+```js filename="Connect to the Lace Wallet"
+const connectWallet: (walletName: string, persist?: boolean) => Promise<void>
+```
 
 ##### useWalletList Hook
+```js copy
+import { useWalletList } from "@meshsdk/midnight-react";
+
+const walletList = useWalletList();  
+```
+<Callout type="info" emoji="ℹ️">
+Output and function signatures
+</Callout>
+```js filename="walletList" 
+const walletList: DAppConnectorAPI[]
+```
+[DAppConnectorAPI[]](https://docs.midnight.network/develop/reference/midnight-api/dapp-connector/interfaces/DAppConnectorAPI)
+
+
+##### useWalletBalanceProve Hook
+```js copy
+import { useWalletBalanceProve } from "@meshsdk/midnight-react";
+
+const {result, submitTx, submitting} = useWalletBalanceProve(); 
+```
+<Callout type="info" emoji="ℹ️">
+Output and function signatures
+</Callout>
+
+<Table>  
+  <tbody>
+    <Tr>
+      <Td>submitting</Td>
+      <Td>Boolean (true or false)</Td>
+    </Tr>       
+  </tbody>
+</Table>
+```js filename="submitTx" 
+const submitTx: (tx: Transaction, newCoins: CoinInfo[]) => Promise<void>
+```
+```js filename="result" 
+const result: Transaction | undefined
+```
+[Transaction](https://docs.midnight.network/develop/reference/midnight-api/zswap/classes/Transaction)
+
+[CoinInfo](https://docs.midnight.network/develop/reference/midnight-api/zswap/type-aliases/CoinInfo)
 
 ##### useWalletSubmit Hook
+```js copy
+import { useWalletSubmit } from "@meshsdk/midnight-react";
 
+const { result, submitTx, submitting } = useWalletSubmit();
+```
+<Callout type="info" emoji="ℹ️">
+Output and function signatures
+</Callout>
 
-
-
-
-
+<Table>  
+  <tbody>
+    <Tr>
+      <Td>submitting</Td>
+      <Td>Boolean (true or false)</Td>
+    </Tr>       
+  </tbody>
+</Table>
+```js filename="submitTx" 
+const submitTx: (signedTx: Transaction) => Promise<void>
+```
+```js filename="result" 
+const result: string | undefined
+```
+[Transaction](https://docs.midnight.network/develop/reference/midnight-api/zswap/classes/Transaction)
 
 

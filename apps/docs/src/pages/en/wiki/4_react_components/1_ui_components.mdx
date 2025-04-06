@@ -4,6 +4,7 @@ description: React ready-to-use components
 asIndexPage: true
 sidebarTitle: Wallet UI Components
 ---
+import { Callout } from "nextra/components";
 
 # Wallet UI Components
 
@@ -24,6 +25,7 @@ The library automatically handles saving and reconnecting the user's last connec
 For more customization, you can easily build your own wallet connection component. If you are using React, the [React hooks](/en/wiki/4_react_components/2_hooks) will be useful. You may also take reference from this [component](https://github.com/MeshJS/midnight/tree/main/example-workspaces/wallet-examples).
 
 ##### Connect Wallet Component
+The wallet component is currently supported only in the Google Chrome browser.
 ```js copy
 import { MidnightWallet } from "@meshsdk/midnight-react";
 
@@ -33,6 +35,9 @@ export default function Home() {
   );
 }
 ```
+<Callout type="info" emoji="ℹ️">
+Output of the component
+</Callout>
 
 import { MidnightMeshProvider, MidnightWallet } from "@meshsdk/midnight-react";
 import "@meshsdk/midnight-react/styles.css";
