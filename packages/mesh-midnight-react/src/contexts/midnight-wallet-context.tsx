@@ -4,7 +4,7 @@ export { WalletContext } from "./wallet-context";
 
 interface MidnightMeshProviderProps {
   children: React.ReactNode;
-  logger: Logger;
+  logger?: Logger;
 }
 
 export const MidnightMeshProvider = ({children, logger}: MidnightMeshProviderProps) => {

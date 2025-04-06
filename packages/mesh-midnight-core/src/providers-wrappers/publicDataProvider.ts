@@ -15,7 +15,7 @@ export class WrappedPublicDataProvider implements PublicDataProvider {
   constructor(
     private readonly wrapped: PublicDataProvider,
     private readonly callback: (action: 'watchForTxDataStarted' | 'watchForTxDataDone') => void,
-    private readonly logger: Logger,
+    private readonly logger?: Logger,
   ) {}
 
   queryContractState(

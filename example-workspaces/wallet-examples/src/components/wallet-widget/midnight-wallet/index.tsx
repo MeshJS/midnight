@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button } from '../common/button';
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -7,8 +7,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '../common/dialog';
-import { useAssets, useWallet } from '../hooks';
+} from '@/components/ui/dialog';
+import { useAssets, useWallet } from '@meshsdk/midnight-react';
 import ConnectedButton from './connected-button';
 import { screens } from './data';
 import ScreenMain from './screen-main';
@@ -39,11 +39,11 @@ export const MidnightWallet = () => {
   );
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
+// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-unsafe-function-type
 function Header({ screen, setScreen }: { screen: string; setScreen: Function }) {
   return (
     <DialogHeader>
-      <DialogTitle className="mesh-flex mesh-justify-between">
+      <DialogTitle className="flex justify-between">
         <span style={{ width: '24px' }}></span>
         <span className=''>
           {/* @ts-expect-error any type */}
@@ -57,11 +57,11 @@ function Header({ screen, setScreen }: { screen: string; setScreen: Function }) 
 
 function Footer() {
   return (
-    <DialogFooter className="mesh-justify-center mesh-text-sm">
+    <DialogFooter className="justify-center text-sm">
       <a
         href="https://meshjs.dev/"
         target="_blank"
-        className="mesh-grow mesh-flex mesh-gap-1 mesh-items-center mesh-justify-center mesh-text-accent-foreground hover:mesh-text-zinc-500 mesh-fill-foreground hover:mesh-fill-zinc-500 dark:hover:mesh-text-orange-200 dark:hover:mesh-fill-zinc-200"
+        className="grow flex gap-1 items-center justify-center text-accent-foreground hover:text-zinc-500 fill-black hover:fill-zinc-500 dark:hover:text-zinc-200 dark:fill-white dark:hover:fill-zinc-200"
       >
         <span className="">Powered by</span>
         <svg width={22} height={22} enableBackground="new 0 0 300 200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">

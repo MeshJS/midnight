@@ -3,7 +3,7 @@ import { type Logger } from 'pino';
 export function retryWithBackoff<T>(
   operation: () => Promise<T>, // The promise-returning operation
   operationName: string, // Name of the operation for logging
-  logger: Logger,
+  logger?: Logger,
   retries: number = 10, // Number of retries
   delay: number = 500, // Initial delay in milliseconds
   backoffFactor: number = 1.2, // Backoff factor
@@ -18,19 +18,19 @@ export function retryWithBackoff<T>(
       operation()
         .then((result) => {
           if (isRetry) {
-            logger.info(`[${operationName}] Operation succeeded after retries.`);
+            logger?.info(`[${operationName}] Operation succeeded after retries.`);
           }
           resolve(result);
         })
         .catch((error) => {
           // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-          logger.error(`[${operationName}] Operation failed: ${error.message}`);
+          logger?.error(`[${operationName}] Operation failed: ${error.message}`);
 
           if (retryCount <= 0) {
-            logger.error(`[${operationName}] All retries exhausted. Rejecting.`);
+            logger?.error(`[${operationName}] All retries exhausted. Rejecting.`);
             reject(error);
           } else {
-            logger.info(`[${operationName}] Retrying operation in ${currentDelay}ms...`);
+            logger?.info(`[${operationName}] Retrying operation in ${currentDelay}ms...`);
             setTimeout(() => {
               const nextDelay = Math.min(currentDelay * backoffFactor, maxDelay);
               attempt(retryCount - 1, nextDelay, true);
