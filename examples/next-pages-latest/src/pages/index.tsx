@@ -1,10 +1,11 @@
-import { MeshBadge } from "@/components/mesh-badge";
+import { ModeToggle } from "@/components/mode-toggle";
+import { MidnightWallet } from "@meshsdk/midnight-react";
 
 export default function Home() {
   return (
     <>
-    <div>Hola</div>
-    <MeshBadge/>
+      <ModeToggle />
+      <MidnightWallet />
     </>
   );
 }
