@@ -1,5 +1,6 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { useAssets, useWallet } from '@meshsdk/midnight-react';
+import { Button } from '@/components/ui/button';
 
 export default function ConnectedButton() {
   const { disconnect } = useWallet();
@@ -8,15 +9,15 @@ export default function ConnectedButton() {
   return (
     <>
       {address && (
-        <DropdownMenu>
+        <DropdownMenu >
           <DropdownMenuTrigger asChild>
-            <button className="mesh-border mesh-border-[#0E1B2E] mesh-rounded-[3px] mesh-w-[140px] mesh-py-1.5 mesh-text-[16px]">
+            <Button variant="outline">
               {address.slice(0, 4)}...{address.slice(-4)}
-            </button>
+            </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className={`mesh-rounded-[3px] mesh-w-[140px] `}>
+          <DropdownMenuContent align="start" className="">
             <DropdownMenuItem
-              className="mesh-text-[16px] mesh-text-[#0E1B2E] mesh-cursor-pointer"
+              className="cursor-pointer"
               onClick={() => {
                 navigator.clipboard.writeText(address);
               }}
@@ -24,7 +25,7 @@ export default function ConnectedButton() {
               Copy Address
             </DropdownMenuItem>
             <DropdownMenuItem
-              className="mesh-text-[16px] mesh-text-[#0E1B2E] mesh-cursor-pointer"
+              className="cursor-pointer"
               onClick={() => {
                 disconnect();
               }}

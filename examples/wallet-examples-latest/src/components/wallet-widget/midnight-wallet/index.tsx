@@ -13,7 +13,7 @@ import ConnectedButton from './connected-button';
 import { screens } from './data';
 import ScreenMain from './screen-main';
 
-export const CardanoWallet = () => {  
+export const MidnightWallet = () => {  
   const { open, setOpen } = useWallet();
   const [screen, setScreen] = useState('main');
   const { hasConnectedWallet } = useAssets();
@@ -39,7 +39,7 @@ export const CardanoWallet = () => {
   );
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
+// eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-unsafe-function-type
 function Header({ screen, setScreen }: { screen: string; setScreen: Function }) {
   return (
     <DialogHeader>
