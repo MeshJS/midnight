@@ -1,29 +1,26 @@
-import { type SigningKey } from '@midnight-ntwrk/compact-runtime';
-import type { PrivateStateProvider } from '@midnight-ntwrk/midnight-js-types';
+import type { PrivateStateProvider, PrivateStateId } from '@midnight-ntwrk/midnight-js-types';
 import type { Logger } from 'pino';
-import { type PrivateStateSchema } from '@midnight-ntwrk/midnight-js-types';
-
-export class WrappedPrivateStateProvider<PSS extends PrivateStateSchema = PrivateStateSchema>
-  implements PrivateStateProvider<PSS>
+export class WrappedPrivateStateProvider<PSI extends PrivateStateId = PrivateStateId, PS = any>
+  implements PrivateStateProvider<PSI, PS>
 {
   constructor(
-    private readonly privateDataProvider: PrivateStateProvider<PSS>,
+    private readonly privateDataProvider: PrivateStateProvider<PSI, PS>,
     private readonly logger?: Logger,
   ) {}
 
-  set<PSK extends string>(key: PSK, state: PSS[PSK]): Promise<void> {
-    this.logger?.trace(`Setting private state for key: ${key}`);
-    return this.privateDataProvider.set(key, state);
+  set(privateStateId: PSI, state: PS): Promise<void> {
+    this.logger?.trace(`Setting private state for key: ${privateStateId}`);
+    return this.privateDataProvider.set(privateStateId, state);
   }
 
-  get<PSK extends string>(key: PSK): Promise<PSS[PSK] | null> {
-    this.logger?.trace(`Getting private state for key: ${key}`);
-    return this.privateDataProvider.get(key);
+  get(privateStateId: PSI): Promise<null | PS> {
+    this.logger?.trace(`Getting private state for key: ${privateStateId}`);
+    return this.privateDataProvider.get(privateStateId);
   }
 
-  remove<PSK extends string>(key: PSK): Promise<void> {
-    this.logger?.trace(`Removing private state for key: ${key}`);
-    return this.privateDataProvider.remove(key);
+  remove(privateStateId: PSI): Promise<void> {
+    this.logger?.trace(`Removing private state for key: ${privateStateId}`);
+    return this.privateDataProvider.remove(privateStateId);
   }
 
   clear(): Promise<void> {
@@ -31,19 +28,19 @@ export class WrappedPrivateStateProvider<PSS extends PrivateStateSchema = Privat
     return this.privateDataProvider.clear();
   }
 
-  setSigningKey<PSK extends string>(key: PSK, signingKey: SigningKey): Promise<void> {
-    this.logger?.trace(`Setting signing key for key: ${key}`);
-    return this.privateDataProvider.setSigningKey(key, signingKey);
+  setSigningKey(address: string, signingKey: string): Promise<void> {
+    this.logger?.trace(`Setting signing key for key: ${address}`);
+    return this.privateDataProvider.setSigningKey(address, signingKey);
   }
 
-  getSigningKey<PSK extends string>(key: PSK): Promise<SigningKey | null> {
-    this.logger?.trace(`Getting signing key for key: ${key}`);
-    return this.privateDataProvider.getSigningKey(key);
+  getSigningKey(address: string): Promise<null | string> {
+    this.logger?.trace(`Getting signing key for key: ${address}`);
+    return this.privateDataProvider.getSigningKey(address);
   }
 
-  removeSigningKey<PSK extends string>(key: PSK): Promise<void> {
-    this.logger?.trace(`Removing signing key for key: ${key}`);
-    return this.privateDataProvider.removeSigningKey(key);
+  removeSigningKey(address: string): Promise<void> {
+    this.logger?.trace(`Removing signing key for key: ${address}`);
+    return this.privateDataProvider.removeSigningKey(address);
   }
 
   clearSigningKeys(): Promise<void> {
