@@ -34,11 +34,14 @@
     "eslint": "^8.57.0",
     "tsup": "^8.0.2",
     "typedoc": "^0.26.3",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "pino": "^9.7.0",
+    "pino-pretty": "^13.0.0"
   },
   "dependencies": {
-    "@meshsdk/midnight-core": "*",    
-    "punycode": "^2.3.1"    
+    "@meshsdk/midnight-core": "*",
+    "punycode": "^2.3.1",
+    "@midnight-ntwrk/zswap": "*"
   },
   "prettier": "@meshsdk/configs/prettier",
   "publishConfig": {

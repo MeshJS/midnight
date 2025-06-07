@@ -19,7 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
         disableTransitionOnChange
       >
         <MidnightMeshProvider logger={logger}>
-          {/* <Component {...pageProps} />           */}
+          <Component {...pageProps} />          
         </MidnightMeshProvider>
       </NextThemesProvider>
     </>
