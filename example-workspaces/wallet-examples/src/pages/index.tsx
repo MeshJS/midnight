@@ -1,7 +1,7 @@
 import { ModeToggle } from "@/components/mode-toggle";
-import { MidnightWallet, useAssets, useWallet } from "@meshsdk/midnight-react";
+// import { MidnightWallet, useAssets, useWallet } from "@meshsdk/midnight-react";
 // import { useWalletList, useWalletBalanceProve, useWalletSubmit } from "@meshsdk/midnight-react";
-import { MidnightWallet as HeadlessWallet } from "@/components/wallet-widget/midnight-wallet";
+// import { MidnightWallet as HeadlessWallet } from "@/components/wallet-widget/midnight-wallet";
 
 export default function Home() {
   const {address, coinPublicKey, encryptionPublicKey, hasConnectedWallet, isProofServerOnline, uris, walletName} = useAssets();

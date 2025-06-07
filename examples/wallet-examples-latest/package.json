@@ -10,7 +10,9 @@
     "clean": "rm -rf node_modules package-lock.json .next"
   },
   "dependencies": {
-    "@meshsdk/midnight-react": "^0.0.3",
+    "@meshsdk/midnight-react": "file:/home/erick/mesh/midnight/packages/mesh-midnight-react/dist/meshsdk-midnight-react-0.0.4.tgz",
+    "@meshsdk/midnight-wallet": "file:/home/erick/mesh/midnight/packages/mesh-midnight-wallet/dist/meshsdk-midnight-wallet-0.0.4.tgz",
+    "@meshsdk/midnight-core": "file:/home/erick/mesh/midnight/packages/mesh-midnight-core/dist/meshsdk-midnight-core-0.0.4.tgz",
     "@radix-ui/react-dialog": "^1.1.6",
     "@radix-ui/react-dropdown-menu": "^2.1.6",
     "@radix-ui/react-slot": "^1.1.2",

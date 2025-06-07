@@ -1,6 +1,6 @@
 {
   "name": "@meshsdk/midnight-core",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Core",
   "main": "./dist/index.cjs",
   "browser": "./dist/index.js",
@@ -35,27 +35,7 @@
     "typedoc": "^0.26.3",
     "typescript": "^5.3.3"
   },
-  "dependencies": {
-    "@midnight-ntwrk/compact-runtime": "^0.7.0",
-    "@midnight-ntwrk/dapp-connector-api": "2.0.0",
-    "@midnight-ntwrk/ledger": "3.0.6",
-    "@midnight-ntwrk/midnight-js-contracts": "1.0.0",
-    "@midnight-ntwrk/midnight-js-fetch-zk-config-provider": "1.0.0",
-    "@midnight-ntwrk/midnight-js-http-client-proof-provider": "1.0.0",
-    "@midnight-ntwrk/midnight-js-indexer-public-data-provider": "1.0.0",
-    "@midnight-ntwrk/midnight-js-level-private-state-provider": "1.0.0",
-    "@midnight-ntwrk/midnight-js-network-id": "1.0.0",
-    "@midnight-ntwrk/midnight-js-node-zk-config-provider": "1.0.0",
-    "@midnight-ntwrk/midnight-js-types": "1.0.0",
-    "@midnight-ntwrk/midnight-js-utils": "1.0.0",
-    "@midnight-ntwrk/wallet": "4.0.0",
-    "@midnight-ntwrk/wallet-api": "4.0.0",
-    "@midnight-ntwrk/wallet-sdk-address-format": "1.0.0",
-    "fp-ts": "^2.16.1",
-    "io-ts": "^2.2.20",
-    "pino": "^8.16.0",
-    "pino-pretty": "^10.2.3",
-    "rxjs": "^7.8.1"
+  "dependencies": {    
   },
   "prettier": "@meshsdk/configs/prettier",
   "publishConfig": {

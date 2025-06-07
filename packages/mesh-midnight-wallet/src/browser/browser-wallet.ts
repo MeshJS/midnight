@@ -87,8 +87,7 @@ export class MidnightBrowserWallet {
     window.localStorage.removeItem('walletName-connected');
   }
 
-  static async connectToWallet(walletName: string, logger?: Logger): Promise<MidnightBrowserWallet> {
-    const COMPATIBLE_CONNECTOR_API_VERSION = '1.x';
+  static async connectToWallet(walletName: string, logger?: Logger): Promise<MidnightBrowserWallet> {    
 
     return firstValueFrom(
       fnPipe(
