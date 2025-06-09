@@ -9,8 +9,8 @@
     "lint": "next lint",
     "clean": "rm -rf node_modules package-lock.json .next"
   },
-  "dependencies": {
-    "@meshsdk/midnight-react": "*",
+  "dependencies": { 
+    "@meshsdk/midnight-wallet": "*",   
     "@radix-ui/react-dialog": "^1.1.6",
     "@radix-ui/react-dropdown-menu": "^2.1.6",
     "@radix-ui/react-slot": "^1.1.2",

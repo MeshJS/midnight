@@ -1,5 +1,5 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
-import { useAssets, useWallet } from '@meshsdk/midnight-react';
+import { useAssets, useWallet } from '../hooks';
 import { Button } from '@/components/ui/button';
 
 export default function ConnectedButton() {

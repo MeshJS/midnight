@@ -8,7 +8,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { useAssets, useWallet } from '@meshsdk/midnight-react';
+import { useAssets, useWallet } from '../hooks';
 import ConnectedButton from './connected-button';
 import { screens } from './data';
 import ScreenMain from './screen-main';

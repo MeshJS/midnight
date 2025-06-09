@@ -1,6 +1,5 @@
 import { ModeToggle } from "@/components/mode-toggle";
-import { MidnightWallet, useAssets, useWallet } from "@meshsdk/midnight-react";
-import { MidnightWallet as HeadlessWallet } from "@/components/wallet-widget/midnight-wallet";
+import { MidnightWallet, useAssets, useWallet } from "@/components/midnight/wallet-widget";
 
 export default function Home() {
   const {
@@ -18,9 +17,7 @@ export default function Home() {
     <>
       <ModeToggle />
       <div>This is a Wallet Widget</div>
-      <MidnightWallet />
-      <div>This is a Headless Wallet</div>
-      <HeadlessWallet />
+      <MidnightWallet />      
       <div>These are the kooks provided by useAssets</div>
       <div>
         <div>Wallet Name: {walletName}</div>

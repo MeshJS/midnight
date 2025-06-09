@@ -1,7 +1,8 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { MidnightMeshProvider } from "@meshsdk/midnight-react";
-import "@meshsdk/midnight-react/styles.css";
+// import { MidnightMeshProvider } from "@meshsdk/midnight-react";
+// import "@meshsdk/midnight-react/styles.css";
+import { MidnightMeshProvider } from "@/components/midnight/wallet-widget";
 import * as pino from "pino";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 
@@ -18,9 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
         enableSystem
         disableTransitionOnChange
       >
-        <MidnightMeshProvider logger={logger}>
-          <Component {...pageProps} />          
-        </MidnightMeshProvider>
+        <MidnightMeshProvider logger={logger}><Component {...pageProps} /></MidnightMeshProvider>
       </NextThemesProvider>
     </>
   );
