@@ -7,8 +7,29 @@ Mesh Midnight provides tools, documentations, and education materials to remove 
 [midnight.meshjs.dev](https://midnight.meshjs.dev/)
 
 # Buil the workspace
-npm run clean
+## Install dependencies
+```bash
 npm install
+```
+## Buil the Mesh libraries under the packages folder
+```bash
+npm run build:mesh
+```
+## Buil the Mesh applications under the apps folder
+```bash
+npm run build:apps
+```
 
-# Buil the package
-npm run prepack:packages
+# Mesh libraries structure
+
+The Mesh libraries are located in the packages folder. The structure is as follows:
+
+- Config folder
+- Core folder
+- React folder
+- Wallet folder
+
+# Nextjs project
+
+The Nextjs project is located in the example-workspaces/wallet-examples folder. To test if the project is running the command `npm run dev` should pass.
+

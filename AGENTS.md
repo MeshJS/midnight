@@ -1,0 +1,1 @@
+All instructions are included in the README.md file. Follow this document for detailed instructions on how to build the project, and run commands.
