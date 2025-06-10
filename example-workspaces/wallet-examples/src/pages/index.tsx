@@ -1,5 +1,6 @@
 import { ModeToggle } from "@/components/mode-toggle";
 import { MidnightWallet, useAssets, useWallet } from "@/components/midnight/wallet-widget";
+// import { MidnightWallet, useAssets, useWallet } from "@meshsdk/midnight-react";
 
 export default function Home() {
   const {
