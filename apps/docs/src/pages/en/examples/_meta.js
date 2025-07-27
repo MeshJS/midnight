@@ -1,22 +1,6 @@
 export default {
-  "examples": {
-    title: "Midnight examples",
-    route: "/examples",
+  "swap_minting": {
+    title: "Swap & Minting",
+    route: "/swap_minting",
   },  
-  "auction-token": {
-    title: "Auction & Token",
-    route: "/auction-token",
-  },
-  "sea-battle": {
-    title: "Sea Battle",
-    route: "/sea-battle",
-  },
-  "voting": {
-    title: "Voting",
-    route: "/voting",
-  },
-  "amm": {
-    title: "AMM",
-    route: "/amm",
-  },
 };

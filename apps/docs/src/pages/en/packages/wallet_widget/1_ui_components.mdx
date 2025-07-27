@@ -4,7 +4,6 @@ description: React ready-to-use components
 asIndexPage: true
 sidebarTitle: Wallet UI Components
 ---
-import { Callout } from "nextra/components";
 
 # Wallet UI Components
 
@@ -35,25 +34,5 @@ export default function Home() {
   );
 }
 ```
-<Callout type="info" emoji="ℹ️">
-Output of the component
-</Callout>
 
-import { MidnightMeshProvider, MidnightWallet } from "@meshsdk/midnight-react";
-import "@meshsdk/midnight-react/styles.css";
-import * as pino from "pino";
 
-export function Wallet() { 
-  const logger = pino.pino({
-  level: "trace",
-  });
-  return (
-    <MidnightMeshProvider logger={logger}>
-      <div className="mt-5">
-      <MidnightWallet />
-      </div>
-    </MidnightMeshProvider>
-  );
-}
-
-<Wallet />
