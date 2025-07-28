@@ -1,12 +1,15 @@
 {
-  "extends": "@meshsdk/configs/typescript/base.json",
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"],
   "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["DOM", "ESNext"],
     "jsx": "react-jsx",
-    "esModuleInterop": true,    
-    "target": "ES2020",
     "module": "ESNext",
-    "moduleResolution": "node",
-  }
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "strict": true,
+    "declaration": true,
+    "outDir": "dist",
+    "skipLibCheck": true
+  },
+  "include": ["src"]
 }

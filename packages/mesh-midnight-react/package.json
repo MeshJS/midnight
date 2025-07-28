@@ -2,24 +2,22 @@
   "name": "@meshsdk/midnight-react",
   "version": "0.0.4",
   "description": "React component library ",
-  "main": "./dist/index.cjs",
-  "browser": "./dist/index.js",
-  "module": "./dist/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",  
   "types": "./dist/index.d.ts",
   "type": "module",
   "exports": {
     "./styles.css": "./dist/index.css",
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    }
+      "import": "./dist/index.js"    }
   },
+  "sideEffects": ["./dist/index.css"],
   "files": [
     "dist/**"
   ],
   "scripts": {
-    "build:mesh": "tsup && tailwindcss -i ./src/styles.css -o ./dist/index.css",
+    "build:mesh": "vite build",
     "build": "npm run build:mesh",
     "dev": "concurrently \"tsup src/index.ts --format esm,cjs --watch --dts\" \"tailwindcss -i ./src/styles.css -o ./dist/index.css --watch\"",
     "clean": "rm -rf .turbo && rm -rf dist && rm -rf node_modules",
@@ -28,7 +26,7 @@
     "type-check": "tsc --noEmit",
     "prepack:all": "npm run clean && npm install && npm run build && npm run pack"
   },
-  "dependencies": {  
+  "dependencies": {
     "@meshsdk/midnight-core": "0.0.4",
     "@meshsdk/midnight-wallet": "0.0.4",
     "@midnight-ntwrk/compact-runtime": "0.7.0",
@@ -46,32 +44,38 @@
     "@midnight-ntwrk/wallet": "4.0.0",
     "@midnight-ntwrk/wallet-api": "4.0.0",
     "@midnight-ntwrk/wallet-sdk-address-format": "1.0.0",
+    "@radix-ui/react-dialog": "^1.1.14",
+    "@radix-ui/react-dropdown-menu": "^2.1.15",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-tooltip": "^1.2.7",
+    "class-variance-authority": "^0.7.1",
     "fp-ts": "^2.16.1",
     "io-ts": "^2.2.20",
     "pino": "^8.16.0",
     "pino-pretty": "^10.2.3",
-    "rxjs": "^7.8.1",  
-    "class-variance-authority": "^0.7.1",
+    "rxjs": "^7.8.1",
     "tailwind-merge": "^2.6.0",
-    "tailwindcss-animate": "^1.0.7",
-    "@radix-ui/react-dialog": "^1.1.6",
-    "@radix-ui/react-dropdown-menu": "^2.1.6",   
-    "@radix-ui/react-slot": "^1.1.2",    
-    "@radix-ui/react-tooltip": "^1.1.8" 
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@meshsdk/configs": "*",      
+    "@meshsdk/configs": "*",
+    "@originjs/vite-plugin-commonjs": "^1.0.3",
+    "@tailwindcss/postcss": "^4.1.11",
     "autoprefixer": "^10.4.18",
     "concurrently": "^8.0.1",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
-    "typescript": "latest"
+    "typescript": "latest",
+    "vite": "^7.0.4",
+    "vite-plugin-dts": "^4.5.4",
+    "vite-plugin-top-level-await": "^1.6.0",
+    "vite-plugin-wasm": "^3.5.0"
   },
   "peerDependencies": {
-    "react": ">=16.0.0 <20.0.0 || >=16.0.0-rc <20.0.0-rc || >=19.0.0-rc",
-    "react-dom": ">=16.0.0 <20.0.0 || >=16.0.0-rc <20.0.0-rc || >=19.0.0-rc", 
     "@types/react": "*",
-    "@types/react-dom": "*"       
+    "@types/react-dom": "*",
+    "react": ">=16.0.0 <20.0.0 || >=16.0.0-rc <20.0.0-rc || >=19.0.0-rc",
+    "react-dom": ">=16.0.0 <20.0.0 || >=16.0.0-rc <20.0.0-rc || >=19.0.0-rc"
   },
   "prettier": "@meshsdk/configs/prettier",
   "publishConfig": {

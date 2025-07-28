@@ -17,7 +17,7 @@ export default function ConnectedButton() {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="start">
             <DropdownMenuItem
-              className="mesh-cursor-pointer"
+              className="cursor-pointer"
               onClick={() => {
                 navigator.clipboard.writeText(address);
               }}
@@ -25,7 +25,7 @@ export default function ConnectedButton() {
               Copy Address
             </DropdownMenuItem>
             <DropdownMenuItem
-              className="mesh-cursor-pointer"
+              className="cursor-pointer"
               onClick={() => {
                 disconnect();
               }}
