@@ -2,24 +2,25 @@
   "name": "@meshsdk/midnight-react",
   "version": "0.0.4",
   "description": "React component library ",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",  
-  "types": "./dist/index.d.ts",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/types/index.d.ts",
   "type": "module",
+  "files": [
+    "dist"
+  ],
   "exports": {
-    "./styles.css": "./dist/index.css",
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"    }
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js"
+    }
   },
-  "sideEffects": ["./dist/index.css"],
-  "files": [
-    "dist/**"
-  ],
+  "sideEffects": true,
   "scripts": {
     "build:mesh": "vite build",
     "build": "npm run build:mesh",
-    "dev": "concurrently \"tsup src/index.ts --format esm,cjs --watch --dts\" \"tailwindcss -i ./src/styles.css -o ./dist/index.css --watch\"",
+    "dev": "concurrently \"tsc --watch\" \"vite build --watch\" \"tailwindcss -i ./src/styles.css -o ./dist/index.css --watch\"",
     "clean": "rm -rf .turbo && rm -rf dist && rm -rf node_modules",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "pack": "npm pack --pack-destination=./dist",
@@ -48,9 +49,11 @@
     "@radix-ui/react-dropdown-menu": "^2.1.15",
     "@radix-ui/react-slot": "^1.2.3",
     "@radix-ui/react-tooltip": "^1.2.7",
+    "@tailwindcss/vite": "^4.1.11",
     "class-variance-authority": "^0.7.1",
     "fp-ts": "^2.16.1",
     "io-ts": "^2.2.20",
+    "lucide-react": "^0.484.0",
     "pino": "^8.16.0",
     "pino-pretty": "^10.2.3",
     "rxjs": "^7.8.1",
@@ -61,6 +64,7 @@
     "@meshsdk/configs": "*",
     "@originjs/vite-plugin-commonjs": "^1.0.3",
     "@tailwindcss/postcss": "^4.1.11",
+    "@vitejs/plugin-react": "^4.1.0",
     "autoprefixer": "^10.4.18",
     "concurrently": "^8.0.1",
     "postcss": "^8.4.35",
