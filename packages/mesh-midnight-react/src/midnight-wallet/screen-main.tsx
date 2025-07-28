@@ -21,7 +21,7 @@ export default function ScreenMain({
   return (
     <TooltipProvider>
       <div
-        className="grid place-items-center gap-4 gap-y-8 py-7"
+        className="mesh-grid mesh-gap-4 mesh-py-7 mesh-place-items-center mesh-gap-y-8"
         style={{
           gridTemplateColumns: `repeat(${wallets.length}, minmax(0, 1fr))`,
         }}

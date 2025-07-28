@@ -30,7 +30,7 @@ export const MidnightWallet = () => {
         )}
       </div>
 
-      <DialogContent className="sm:max-w-[425px] justify-center items-center" onOpenAutoFocus={(event) => event.preventDefault()}>
+      <DialogContent className="sm:max-w-[425px]" onOpenAutoFocus={(event) => event.preventDefault()}>
         <Header screen={screen} setScreen={setScreen} />
         {screen == 'main' && <ScreenMain setOpen={setOpen} />}
         <Footer />
@@ -40,10 +40,10 @@ export const MidnightWallet = () => {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
-function Header({ screen, setScreen: _setScreen }: { screen: string; setScreen: Function }) {
+function Header({ screen, setScreen }: { screen: string; setScreen: Function }) {
   return (
     <DialogHeader>
-      <DialogTitle className="flex justify-between">
+      <DialogTitle className="mesh-flex mesh-justify-between">
         <span style={{ width: '24px' }}></span>
         <span className=''>
           {/* @ts-expect-error any type */}
@@ -57,11 +57,11 @@ function Header({ screen, setScreen: _setScreen }: { screen: string; setScreen: 
 
 function Footer() {
   return (
-    <DialogFooter className="justify-center text-sm">
+    <DialogFooter className="mesh-justify-center mesh-text-sm">
       <a
         href="https://meshjs.dev/"
         target="_blank"
-        className="flex gap-1 items-center justify-center text-accent-foreground hover:text-zinc-500 fill-foreground hover:fill-zinc-500 dark:hover:text-orange-200 dark:hover:fill-zinc-200"
+        className="mesh-grow mesh-flex mesh-gap-1 mesh-items-center mesh-justify-center mesh-text-accent-foreground hover:mesh-text-zinc-500 mesh-fill-foreground hover:mesh-fill-zinc-500 dark:hover:mesh-text-orange-200 dark:hover:mesh-fill-zinc-200"
       >
         <span className="">Powered by</span>
         <svg width={22} height={22} enableBackground="new 0 0 300 200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
