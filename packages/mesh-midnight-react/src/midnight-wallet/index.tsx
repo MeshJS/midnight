@@ -23,14 +23,14 @@ export const MidnightWallet = () => {
       <div>
         {!hasConnectedWallet ? (
           <DialogTrigger asChild>
-            <Button variant="outline" className="">Connect Wallet</Button>
+            <Button variant="outline" className="mesh-text-foreground">Connect Wallet</Button>
           </DialogTrigger>
         ) : (
           <ConnectedButton />
         )}
       </div>
 
-      <DialogContent className="sm:max-w-[425px]" onOpenAutoFocus={(event) => event.preventDefault()}>
+      <DialogContent className="sm:mesh-max-w-[425px]" onOpenAutoFocus={(event) => event.preventDefault()}>
         <Header screen={screen} setScreen={setScreen} />
         {screen == 'main' && <ScreenMain setOpen={setOpen} />}
         <Footer />

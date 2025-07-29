@@ -1,6 +1,6 @@
 {
   "name": "@meshsdk/midnight-wallet",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Wallets",
   "main": "./dist/index.cjs",
   "browser": "./dist/index.js",
@@ -30,19 +30,14 @@
   },
   "devDependencies": {
     "@meshsdk/configs": "*",
-    "@meshsdk/midnight-core": "0.0.4",
+    "@meshsdk/midnight-core": "0.0.5",
     "eslint": "^8.57.0",
     "tsup": "^8.0.2",
     "typedoc": "^0.26.3",
     "typescript": "^5.3.3"
   },
   "dependencies": {    
-    "fp-ts": "^2.16.1",
-    "io-ts": "^2.2.20",
-    "pino": "^8.16.0",
-    "pino-pretty": "^10.2.3",
-    "punycode": "^2.3.1",
-    "rxjs": "^7.8.1"
+    
   },
   "prettier": "@meshsdk/configs/prettier",
   "publishConfig": {

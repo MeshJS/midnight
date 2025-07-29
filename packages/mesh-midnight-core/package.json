@@ -1,6 +1,6 @@
 {
   "name": "@meshsdk/midnight-core",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Core",
   "main": "./dist/index.cjs",
   "browser": "./dist/index.js",
@@ -36,11 +36,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "fp-ts": "^2.16.1",
-    "io-ts": "^2.2.20",
-    "pino": "^8.16.0",
-    "pino-pretty": "^10.2.3",
-    "rxjs": "^7.8.1"
+
   },
   "prettier": "@meshsdk/configs/prettier",
   "publishConfig": {

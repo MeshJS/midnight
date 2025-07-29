@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import IconLace from '../common/icons/icon-lace';
 import { TooltipProvider } from '../common/tooltip';
 import { useWallet, useWalletList } from '../hooks';

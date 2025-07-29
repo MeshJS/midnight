@@ -18,14 +18,16 @@ const DialogOverlay = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
 >(({ className, ...props }, ref) => (
-  <DialogPrimitive.Overlay
-    ref={ref}
-    className={cn(
-      "mesh-fixed mesh-inset-0 mesh-z-50 mesh-bg-black/80  data-[state=open]:mesh-animate-in data-[state=closed]:mesh-animate-out data-[state=closed]:mesh-fade-out-0 data-[state=open]:mesh-fade-in-0",
-      className,
-    )}
-    {...props}
-  />
+  <div className="mesh-fixed mesh-inset-0">
+    <DialogPrimitive.Overlay
+      ref={ref}
+      className={cn(
+        "mesh-fixed mesh-inset-0 mesh-z-10 mesh-bg-black/80 data-[state=open]:mesh-animate-in data-[state=closed]:mesh-animate-out data-[state=closed]:mesh-fade-out-0 data-[state=open]:mesh-fade-in-0",
+        className,
+      )}
+      {...props}
+    />
+  </div>
 ));
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
 
@@ -35,21 +37,22 @@ const DialogContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <DialogPortal>
     <DialogOverlay />
-    <DialogPrimitive.Content
-      ref={ref}
-      className={cn(
-        "mesh-fixed mesh-left-[50%] mesh-top-[50%] mesh-z-50 mesh-grid mesh-w-full mesh-max-w-lg mesh-translate-x-[-50%] mesh-translate-y-[-50%] mesh-gap-4 mesh-border mesh-bg-background  mesh-p-6 mesh-shadow-lg mesh-duration-200 mesh-data-[state=open]:animate-in mesh-data-[state=closed]:animate-out mesh-data-[state=closed]:fade-out-0 mesh-data-[state=open]:fade-in-0 mesh-data-[state=closed]:zoom-out-95 mesh-data-[state=open]:zoom-in-95 mesh-data-[state=closed]:slide-out-to-left-1/2 mesh-data-[state=closed]:slide-out-to-top-[48%] mesh-data-[state=open]:slide-in-from-left-1/2 mesh-data-[state=open]:slide-in-from-top-[48%] sm:mesh-rounded-lg"
-,
-        className,
-      )}
-      {...props}
-    >
-      {children}
-      <DialogPrimitive.Close className="mesh-absolute mesh-right-4 mesh-top-4 mesh-rounded-sm mesh-opacity-70 mesh-ring-offset-background mesh-transition-opacity mesh-hover:opacity-100 mesh-focus:outline-none mesh-focus:ring-2 mesh-focus:ring-ring mesh-focus:ring-offset-2 mesh-disabled:pointer-events-none mesh-data-[state=open]:bg-accent mesh-data-[state=open]:text-muted-foreground">
-        <X className="mesh-h-4 mesh-w-4" />
-        <span className="mesh-sr-only">Close</span>
-      </DialogPrimitive.Close>
-    </DialogPrimitive.Content>
+    <div className="mesh-fixed mesh-inset-0 mesh-pointer-events-none">
+      <DialogPrimitive.Content
+        ref={ref}
+        className={cn(
+          "mesh-absolute mesh-z-60 mesh-left-1/2 mesh-top-1/2 mesh-w-full mesh-max-w-lg mesh--translate-x-1/2 mesh--translate-y-1/2 mesh-grid mesh-gap-4 mesh-border mesh-bg-background2 mesh-text-foreground mesh-p-6 mesh-shadow-lg mesh-pointer-events-auto data-[state=open]:mesh-animate-in data-[state=closed]:mesh-animate-out data-[state=closed]:mesh-fade-out-0 data-[state=open]:mesh-fade-in-0 data-[state=closed]:mesh-zoom-out-95 data-[state=open]:mesh-zoom-in-95 data-[state=closed]:mesh-slide-out-to-left-1/2 data-[state=closed]:mesh-slide-out-to-top-[48%] data-[state=open]:mesh-slide-in-from-left-1/2 data-[state=open]:mesh-slide-in-from-top-[48%] sm:mesh-rounded-lg",
+          className,
+        )}
+        {...props}
+      >
+        {children}
+        <DialogPrimitive.Close className="mesh-absolute mesh-right-4 mesh-top-4 mesh-rounded-sm mesh-opacity-70 mesh-ring-offset-background mesh-transition-opacity mesh-hover:opacity-100 mesh-focus:outline-none mesh-focus:ring-2 mesh-focus:ring-ring mesh-focus:ring-offset-2 mesh-disabled:pointer-events-none data-[state=open]:mesh-bg-accent data-[state=open]:mesh-text-muted-foreground">
+          <X className="mesh-h-4 mesh-w-4" />
+          <span className="mesh-sr-only">Close</span>
+        </DialogPrimitive.Close>
+      </DialogPrimitive.Content>
+    </div>
   </DialogPortal>
 ));
 DialogContent.displayName = DialogPrimitive.Content.displayName;

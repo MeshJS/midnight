@@ -27,7 +27,13 @@
     "@midnight-ntwrk/wallet": "5.0.0",
     "@midnight-ntwrk/wallet-api": "5.0.0",
     "@midnight-ntwrk/dapp-connector-api": "3.0.0",
-    "@midnight-ntwrk/zswap": "4.0.0"    
+    "@midnight-ntwrk/zswap": "4.0.0",
+    "fp-ts": "^2.16.1",
+    "io-ts": "^2.2.20",
+    "pino": "^8.16.0",
+    "pino-pretty": "^10.2.3",
+    "punycode": "^2.3.1",
+    "rxjs": "^7.8.1"    
   },
   "devDependencies": {
     "prettier": "^3.5.3",
