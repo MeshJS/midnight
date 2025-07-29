@@ -3,9 +3,8 @@ import { DAppConnectorAPI, DAppConnectorWalletAPI, ServiceUriConfig } from '@mid
 import { Transaction } from '@midnight-ntwrk/zswap';
 import { pipe as fnPipe } from 'fp-ts/lib/function.js';
 import { type Logger } from 'pino';
-import { catchError, concatMap, filter, firstValueFrom, interval, map, of, take, tap, throwError, timeout } from 'rxjs';
+import { catchError, concatMap, filter, firstValueFrom, interval, map, take, tap, throwError, timeout } from 'rxjs';
 import { checkProofServerStatus } from '@meshsdk/midnight-core';
-import punycode from 'punycode';
 
 declare global {
   interface Window {
@@ -24,7 +23,7 @@ export class MidnightBrowserWallet {
   _proofServerOnline: boolean;
 
   private constructor(    
-    connectorAPI: DAppConnectorAPI,
+    _connectorAPI: DAppConnectorAPI,
     walletInstance: DAppConnectorWalletAPI,
     walletName: string,
     uris: ServiceUriConfig,
@@ -87,8 +86,7 @@ export class MidnightBrowserWallet {
     window.localStorage.removeItem('walletName-connected');
   }
 
-  static async connectToWallet(walletName: string, logger?: Logger): Promise<MidnightBrowserWallet> {
-    const COMPATIBLE_CONNECTOR_API_VERSION = '1.x';
+  static async connectToWallet(walletName: string, logger?: Logger): Promise<MidnightBrowserWallet> {    
 
     return firstValueFrom(
       fnPipe(
