@@ -5,7 +5,7 @@ import "@meshsdk/midnight-react/styles.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/home";
 
-export const logger = pino.pino({
+const logger = pino.pino({
   level: "trace",
 });
 

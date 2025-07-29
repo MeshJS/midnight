@@ -29,14 +29,13 @@
     "prepack:all": "npm run clean && npm install && npm run build && npm run pack"
   },
   "devDependencies": {
+    "@humanwhocodes/config-array": "^0.13.0",
     "@meshsdk/configs": "*",
     "eslint": "^8.57.0",
+    "is-path-inside": "^3.0.3",
     "tsup": "^8.0.2",
     "typedoc": "^0.26.3",
     "typescript": "^5.3.3"
-  },
-  "dependencies": {
-
   },
   "prettier": "@meshsdk/configs/prettier",
   "publishConfig": {
