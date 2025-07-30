@@ -15,6 +15,7 @@
     "sh:version": "bash scripts/bump-version.sh"
   },
   "dependencies": {
+    "@bitcoin-js/tiny-secp256k1-asmjs": "^2.2.4",
     "@midnight-ntwrk/compact-runtime": "0.8.1",
     "@midnight-ntwrk/dapp-connector-api": "3.0.0",
     "@midnight-ntwrk/ledger": "4.0.0",
@@ -27,13 +28,19 @@
     "@midnight-ntwrk/midnight-js-types": "2.0.2",
     "@midnight-ntwrk/wallet": "5.0.0",
     "@midnight-ntwrk/wallet-api": "5.0.0",
+    "@midnight-ntwrk/wallet-sdk-hd": "^2.0.0",
     "@midnight-ntwrk/zswap": "4.0.0",
+    "@scure/bip32": "^1.7.0",
+    "@scure/bip39": "^1.6.0",
+    "bip32": "^5.0.0-rc.0",
+    "bip39": "^3.1.0",
     "fp-ts": "^2.16.1",
     "io-ts": "^2.2.20",
     "pino": "^8.16.0",
     "pino-pretty": "^10.2.3",
     "punycode": "^2.3.1",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "is-path-inside": "^4.0.0",

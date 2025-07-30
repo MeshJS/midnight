@@ -26,7 +26,8 @@
     "lint": "eslint",
     "pack": "npm pack --pack-destination=./dist",
     "test": "jest",
-    "prepack:all": "npm run clean && npm install && npm run build && npm run pack"
+    "prepack:all": "npm run clean && npm install && npm run build && npm run pack",
+    "embedded-wallet": "node --experimental-specifier-resolution=node --loader ts-node/esm ./src/embedded/embedded-wallet.ts"
   },
   "devDependencies": {
     "@meshsdk/configs": "*",
