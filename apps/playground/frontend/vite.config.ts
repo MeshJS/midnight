@@ -8,7 +8,7 @@ import tailwindcss from "@tailwindcss/vite"
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
 
 // https://vite.dev/config/
-export default defineConfig(({ command, mode }) => ({
+export default defineConfig(({ mode }) => ({
   define: {
     'process.env.NODE_ENV': JSON.stringify(mode === 'production' ? 'production' : 'development'),
     'process.env': {},
