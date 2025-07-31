@@ -13,29 +13,36 @@ import ConnectedButton from './connected-button';
 import { screens } from './data';
 import ScreenMain from './screen-main';
 
-export const MidnightWallet = () => {  
+interface ButtonProps { 
+  isDark?: boolean;  
+}
+
+export const MidnightWallet = ({ isDark }: ButtonProps) => {  
   const { open, setOpen } = useWallet();
   const [screen, setScreen] = useState('main');
-  const { hasConnectedWallet } = useAssets();
+  const { hasConnectedWallet } = useAssets();   
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <div className={isDark ? "mesh-dark" : ""}>     
+    <Dialog open={open} onOpenChange={setOpen}>   
       <div>
         {!hasConnectedWallet ? (
           <DialogTrigger asChild>
-            <Button variant="outline" className="mesh-text-foreground">Connect Wallet</Button>
+            <Button variant="outline">Connect Wallet</Button>
           </DialogTrigger>
         ) : (
           <ConnectedButton />
         )}
       </div>
-
       <DialogContent className="sm:mesh-max-w-[425px]" onOpenAutoFocus={(event) => event.preventDefault()}>
         <Header screen={screen} setScreen={setScreen} />
         {screen == 'main' && <ScreenMain setOpen={setOpen} />}
         <Footer />
       </DialogContent>
+    
     </Dialog>
+    </div>
+    
   );
 };
 
