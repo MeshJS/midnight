@@ -4,6 +4,7 @@ import {
     useWallet,
   } from "@meshsdk/midnight-react";
   import { ModeToggle } from "@/components/mode-toggle";
+  import { useTheme } from "@/components/theme-provider";
   
   export function Home() {
     const {
@@ -16,6 +17,8 @@ import {
       walletName,
     } = useAssets();
     const { connectingWallet, disconnect, setOpen, connectWallet } = useWallet();
+  const { theme } = useTheme();
+  const isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
   
     return (
       <>
@@ -23,7 +26,7 @@ import {
         <div className="grid md:grid-cols-2 gap-6 break-all">
           <div className="card bg-card shadow p-6 flex flex-col gap-4">
             <h2 className="text-lg font-semibold">Wallet Widget</h2>
-            <MidnightWallet isDark/>
+            <MidnightWallet isDark={isDark}/>
             <ModeToggle />   
             <div className="card bg-card shadow p-6 flex flex-col gap-4 md:col-span-2">
               <h2 className="text-lg font-semibold">Wallet Actions</h2>

@@ -1,7 +1,6 @@
 import * as pino from "pino";
 import { MidnightMeshProvider } from "@meshsdk/midnight-react";
 import { ThemeProvider } from "@/components/theme-provider"
-import "@meshsdk/midnight-react/styles.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/home";
 
