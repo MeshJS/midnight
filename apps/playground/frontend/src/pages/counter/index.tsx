@@ -2,7 +2,7 @@ export const Counter = () => {
   
   return (
     <>
-      Counter Page
+      Work in progress...
     </>
   );
 };
