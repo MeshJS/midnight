@@ -13,22 +13,20 @@ const logger = pino.pino({
 
 function App() { 
 
-  return (
-    <>
+  return (    
     <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
       <MidnightMeshProvider logger={logger}>
-      <BrowserRouter basename="/">      
-            <Routes>
-              <Route element={<MainLayout />}>
-                <Route path="/" element={<Home />} />                
-                <Route path="/wallet-ui" element={<WalletUI />} />
-                <Route path="/counter" element={<Counter />} />
-              </Route>
-            </Routes>
-          </BrowserRouter>                
+        <BrowserRouter basename="/">      
+              <Routes>
+                <Route element={<MainLayout />}>
+                  <Route path="/" element={<Home />} />                
+                  <Route path="/wallet-ui" element={<WalletUI />} />
+                  <Route path="/counter" element={<Counter />} />
+                </Route>
+              </Routes>
+            </BrowserRouter>                
       </MidnightMeshProvider>
-    </ThemeProvider>
-    </>
+    </ThemeProvider>    
   )
 }
 
