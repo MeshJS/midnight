@@ -1,6 +1,10 @@
 import * as React from "react"
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
-import { Check, ChevronRight, Circle } from "lucide-react"
+import {
+  CheckIcon,
+  ChevronRightIcon,
+  DotFilledIcon,
+} from "@radix-ui/react-icons"
 
 import { cn } from "./cn"
 
@@ -25,14 +29,14 @@ const DropdownMenuSubTrigger = React.forwardRef<
   <DropdownMenuPrimitive.SubTrigger
     ref={ref}
     className={cn(
-      "mesh-flex mesh-cursor-default mesh-gap-2 mesh-select-none mesh-items-center mesh-rounded-sm mesh-px-2 mesh-py-1.5 mesh-text-sm mesh-outline-none focus:mesh-bg-accent data-[state=open]:mesh-bg-accent [&_svg]:mesh-pointer-events-none [&_svg]:mesh-size-4 [&_svg]:mesh-shrink-0",
+      "mesh-flex mesh-cursor-default mesh-select-none mesh-items-center mesh-rounded-sm mesh-px-2 mesh-py-1.5 mesh-text-sm mesh-outline-none focus:mesh-bg-slate-100 data-[state=open]:mesh-bg-slate-100",
       inset && "mesh-pl-8",
       className
     )}
     {...props}
   >
     {children}
-    <ChevronRight className="mesh-ml-auto" />
+    <ChevronRightIcon className="mesh-ml-auto mesh-h-4 mesh-w-4" />
   </DropdownMenuPrimitive.SubTrigger>
 ))
 DropdownMenuSubTrigger.displayName =
@@ -45,7 +49,7 @@ const DropdownMenuSubContent = React.forwardRef<
   <DropdownMenuPrimitive.SubContent
     ref={ref}
     className={cn(
-      "mesh-z-50 mesh-min-w-[8rem] mesh-overflow-hidden mesh-rounded-md mesh-border mesh-bg-popover mesh-p-1 mesh-text-popover-foreground mesh-shadow-lg data-[state=open]:mesh-animate-in data-[state=closed]:mesh-animate-out data-[state=closed]:mesh-fade-out-0 data-[state=open]:mesh-fade-in-0 data-[state=closed]:mesh-zoom-out-95 data-[state=open]:mesh-zoom-in-95 data-[side=bottom]:mesh-slide-in-from-top-2 data-[side=left]:mesh-slide-in-from-right-2 data-[side=right]:mesh-slide-in-from-left-2 data-[side=top]:mesh-slide-in-from-bottom-2",
+      "mesh-z-50 mesh-min-w-[8rem] mesh-overflow-hidden mesh-rounded-md mesh-border mesh-border-slate-200 mesh-bg-white mesh-p-1 mesh-text-slate-900 mesh-shadow-lg data-[state=open]:mesh-animate-in data-[state=closed]:mesh-animate-out data-[state=closed]:mesh-fade-out-0 data-[state=open]:mesh-fade-in-0 data-[state=closed]:mesh-zoom-out-95 data-[state=open]:mesh-zoom-in-95 data-[side=bottom]:mesh-slide-in-from-top-2 data-[side=left]:mesh-slide-in-from-right-2 data-[side=right]:mesh-slide-in-from-left-2 data-[side=top]:mesh-slide-in-from-bottom-2",
       className
     )}
     {...props}
@@ -63,7 +67,7 @@ const DropdownMenuContent = React.forwardRef<
       ref={ref}
       sideOffset={sideOffset}
       className={cn(
-        "mesh-z-50 mesh-min-w-[8rem] mesh-overflow-hidden mesh-rounded-md mesh-border mesh-bg-popover mesh-p-1 mesh-text-popover-foreground mesh-shadow-md",
+        "mesh-z-50 mesh-min-w-[8rem] mesh-overflow-hidden mesh-rounded-md mesh-border mesh-border-slate-200 mesh-bg-white mesh-p-1 mesh-text-slate-900 mesh-shadow-lg",
         "data-[state=open]:mesh-animate-in data-[state=closed]:mesh-animate-out data-[state=closed]:mesh-fade-out-0 data-[state=open]:mesh-fade-in-0 data-[state=closed]:mesh-zoom-out-95 data-[state=open]:mesh-zoom-in-95 data-[side=bottom]:mesh-slide-in-from-top-2 data-[side=left]:mesh-slide-in-from-right-2 data-[side=right]:mesh-slide-in-from-left-2 data-[side=top]:mesh-slide-in-from-bottom-2",
         className
       )}
@@ -82,8 +86,8 @@ const DropdownMenuItem = React.forwardRef<
   <DropdownMenuPrimitive.Item
     ref={ref}
     className={cn(
-      "mesh-relative mesh-flex mesh-cursor-default mesh-select-none mesh-items-center mesh-gap-2 mesh-rounded-sm mesh-px-2 mesh-py-1.5 mesh-text-sm mesh-outline-none mesh-transition-colors focus:mesh-bg-accent focus:mesh-text-accent-foreground data-[disabled]:mesh-pointer-events-none data-[disabled]:mesh-opacity-50 [&>svg]:mesh-size-4 [&>svg]:mesh-shrink-0",
-      inset && "pl-8",
+      "mesh-relative mesh-flex mesh-cursor-default mesh-select-none mesh-items-center mesh-rounded-sm mesh-px-2 mesh-py-1.5 mesh-text-sm mesh-outline-none mesh-transition-colors hover:mesh-bg-slate-100 focus:mesh-bg-slate-100 focus:mesh-text-slate-900 data-[disabled]:mesh-pointer-events-none data-[disabled]:mesh-opacity-50",
+      inset && "mesh-pl-8",
       className
     )}
     {...props}
@@ -98,7 +102,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
   <DropdownMenuPrimitive.CheckboxItem
     ref={ref}
     className={cn(
-      "mesh-relative mesh-flex mesh-cursor-default mesh-select-none mesh-items-center mesh-rounded-sm mesh-py-1.5 mesh-pl-8 mesh-pr-2 mesh-text-sm mesh-outline-none mesh-transition-colors focus:mesh-bg-accent focus:mesh-text-accent-foreground data-[disabled]:mesh-pointer-events-none data-[disabled]:mesh-opacity-50",
+      "mesh-relative mesh-flex mesh-cursor-default mesh-select-none mesh-items-center mesh-rounded-sm mesh-py-1.5 mesh-pl-8 mesh-pr-2 mesh-text-sm mesh-outline-none mesh-transition-colors hover:mesh-bg-slate-100 focus:mesh-bg-slate-100 focus:mesh-text-slate-900 data-[disabled]:mesh-pointer-events-none data-[disabled]:mesh-opacity-50",
       className
     )}
     checked={checked}
@@ -106,7 +110,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
   >
     <span className="mesh-absolute mesh-left-2 mesh-flex mesh-h-3.5 mesh-w-3.5 mesh-items-center mesh-justify-center">
       <DropdownMenuPrimitive.ItemIndicator>
-        <Check className="mesh-h-4 mesh-w-4" />
+        <CheckIcon className="mesh-h-4 mesh-w-4" />
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
     {children}
@@ -122,14 +126,14 @@ const DropdownMenuRadioItem = React.forwardRef<
   <DropdownMenuPrimitive.RadioItem
     ref={ref}
     className={cn(
-      "mesh-relative mesh-flex mesh-cursor-default mesh-select-none mesh-items-center mesh-rounded-sm mesh-py-1.5 mesh-pl-8 mesh-pr-2 mesh-text-sm mesh-outline-none mesh-transition-colors focus:mesh-bg-accent focus:mesh-text-accent-foreground data-[disabled]:mesh-pointer-events-none data-[disabled]:mesh-opacity-50",
+      "mesh-relative mesh-flex mesh-cursor-default mesh-select-none mesh-items-center mesh-rounded-sm mesh-py-1.5 mesh-pl-8 mesh-pr-2 mesh-text-sm mesh-outline-none mesh-transition-colors hover:mesh-bg-slate-100 focus:mesh-bg-slate-100 focus:mesh-text-slate-900 data-[disabled]:mesh-pointer-events-none data-[disabled]:mesh-opacity-50",
       className
     )}
     {...props}
   >
     <span className="mesh-absolute mesh-left-2 mesh-flex mesh-h-3.5 mesh-w-3.5 mesh-items-center mesh-justify-center">
       <DropdownMenuPrimitive.ItemIndicator>
-        <Circle className="mesh-h-2 mesh-w-2 mesh-fill-current" />
+        <DotFilledIcon className="mesh-h-4 mesh-w-4 mesh-fill-current" />
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
     {children}
@@ -161,7 +165,8 @@ const DropdownMenuSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DropdownMenuPrimitive.Separator
     ref={ref}
-    className={cn("mesh--mx-1 mesh-my-1 mesh-h-px mesh-bg-muted", className)}
+    className={cn(
+      "-mesh-mx-1 mesh-my-1 mesh-h-px mesh-bg-slate-200", className)}
     {...props}
   />
 ))

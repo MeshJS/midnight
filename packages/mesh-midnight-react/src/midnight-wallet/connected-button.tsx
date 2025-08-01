@@ -11,7 +11,7 @@ export default function ConnectedButton() {
       {address && (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="mesh-text-foreground">
+            <Button variant="outline">
               {address.slice(0, 4)}...{address.slice(-4)}
             </Button>
           </DropdownMenuTrigger>

@@ -1,9 +1,11 @@
 import * as pino from "pino";
 import { MidnightMeshProvider } from "@meshsdk/midnight-react";
 import { ThemeProvider } from "@/components/theme-provider"
-import "@meshsdk/midnight-react/styles.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/home";
+import { MainLayout } from "./layouts/layout";
+import { WalletUI } from "./pages/wallet-ui";
+import { Counter } from "./pages/counter";
 
 const logger = pino.pino({
   level: "trace",
@@ -11,18 +13,20 @@ const logger = pino.pino({
 
 function App() { 
 
-  return (
-    <>
+  return (    
     <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
       <MidnightMeshProvider logger={logger}>
-      <BrowserRouter basename="/">
-          <Routes>            
-            <Route path="/" element={<Home />} />            
-          </Routes>
-        </BrowserRouter>           
+        <BrowserRouter basename="/">      
+              <Routes>
+                <Route element={<MainLayout />}>
+                  <Route path="/" element={<Home />} />                
+                  <Route path="/wallet-ui" element={<WalletUI />} />
+                  <Route path="/counter" element={<Counter />} />
+                </Route>
+              </Routes>
+            </BrowserRouter>                
       </MidnightMeshProvider>
-    </ThemeProvider>
-    </>
+    </ThemeProvider>    
   )
 }
 
