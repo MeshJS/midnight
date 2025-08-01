@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@meshsdk/midnight-react": "*",
+    "@meshsdk/midnight-core": "*",
+    "@meshsdk/midnight-wallet": "*",
     "@radix-ui/react-dropdown-menu": "^2.1.15",
     "@radix-ui/react-slot": "^1.2.3",
     "@tailwindcss/vite": "^4.1.11",

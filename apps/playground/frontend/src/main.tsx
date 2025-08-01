@@ -1,12 +1,17 @@
-import { StrictMode } from 'react'
+import { StrictMode, Suspense, lazy } from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
+import { Loading } from '@/components/loading'
+
 import './index.css'
 import "@meshsdk/midnight-react/styles.css";
 import '@/global.ts'
 
+const LazyApp = lazy(() => import('./App'));
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <Suspense fallback={<Loading />}>
+      <LazyApp />
+    </Suspense>
   </StrictMode>,
 )
