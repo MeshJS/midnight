@@ -2,6 +2,7 @@ import IconLace from '../common/icons/icon-lace';
 import { TooltipProvider } from '../common/tooltip';
 import { useWallet, useWalletList } from '@meshsdk/midnight-react';
 import WalletIcon from './wallet-icon';
+import { type JSX } from 'react';
 
 export default function ScreenMain({
   setOpen,
@@ -11,21 +12,31 @@ export default function ScreenMain({
 }) {
   const wallets = useWalletList();
   const { connectWallet } = useWallet();
-  
+
+  // Example config map for wallet overrides
+  const walletsConfig: { [key: string]: { key: string; displayName: string; icon: JSX.Element } } = {
+    lace: { key: 'mnLace', displayName: 'LACE', icon: <IconLace /> }
+  };
+
   return (
     <TooltipProvider>
       <div
         className="grid gap-4 py-7 place-items-center gap-y-8"
-        style={{ gridTemplateColumns: `repeat(${wallets.length}, minmax(0, 1fr))` }}
+        style={{
+          gridTemplateColumns: `repeat(${wallets.length}, minmax(0, 1fr))`,
+        }}
       >
         {wallets.map((wallet, index) => {
-          const walletKey = wallet.name === "lace" ? "mnLace" : wallet.name;
-          const displayName = wallet.name === "lace" ? "LACE" : "UNDEFINED";
-  
+          const config = walletsConfig[wallet.name];
+          if (!config) return null; // Skip rendering if config is not found
+          const walletKey = config.key;
+          const displayName = config.displayName;
+          const icon = config.icon;
+
           return (
             <WalletIcon
               key={index}
-              iconReactNode={<IconLace />}
+              iconReactNode={icon}
               name={displayName}
               action={() => {
                 connectWallet(walletKey);

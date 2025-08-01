@@ -15,7 +15,7 @@ import ScreenMain from "./screen-main";
 
 export const MidnightWallet = () => {
   const { open, setOpen } = useWallet();
-  const [screen, setScreen] = useState("main");
+  const [screen] = useState("main");
   const { hasConnectedWallet } = useAssets();
 
   return (    
@@ -36,7 +36,7 @@ export const MidnightWallet = () => {
         className="sm:max-w-[425px] justify-center items-center"
         onOpenAutoFocus={(event) => event.preventDefault()}
       >
-        <Header screen={screen} setScreen={setScreen} />
+        <Header screen={screen} />
         {screen == "main" && <ScreenMain setOpen={setOpen} />}
         <Footer />
       </DialogContent>
@@ -44,14 +44,14 @@ export const MidnightWallet = () => {
   );
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
+interface HeaderProps {
+  screen: string;
+  setScreen: (screen: string) => void;
+}
+
 function Header({
   screen,
-  setScreen: _setScreen,
-}: {
-  screen: string;
-  setScreen: Function;
-}) {
+}: Omit<HeaderProps, 'setScreen'>) {
   return (
     <DialogHeader>
       <DialogTitle className="flex justify-between">

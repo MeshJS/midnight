@@ -4,7 +4,6 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/home";
 import { MainLayout } from "./layouts/layout";
-import { Wallet } from "./pages/wallet";
 import { WalletUI } from "./pages/wallet-ui";
 import { Counter } from "./pages/counter";
 
@@ -21,8 +20,7 @@ function App() {
       <BrowserRouter basename="/">      
             <Routes>
               <Route element={<MainLayout />}>
-                <Route path="/" element={<Home />} />
-                <Route path="/wallet" element={<Wallet />} />
+                <Route path="/" element={<Home />} />                
                 <Route path="/wallet-ui" element={<WalletUI />} />
                 <Route path="/counter" element={<Counter />} />
               </Route>
