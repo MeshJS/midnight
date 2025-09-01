@@ -6,9 +6,17 @@ Mesh Midnight provides tools, documentations, and education materials to remove 
 
 [midnight.meshjs.dev](https://midnight.meshjs.dev/)
 
-# Buil the workspace
-npm run clean
+# Install dependencies
+```bash
 npm install
+```
+
+# Build the workspace
+```bash
+npm run build
+```
 
 # Buil the package
+```bash
 npm run prepack:packages
+```
