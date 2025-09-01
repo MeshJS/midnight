@@ -11,9 +11,9 @@ Mesh Midnight provides tools, documentations, and education materials to remove 
 npm install
 ```
 
-# Build the workspace
+# Install turbo
 ```bash
-npm run build
+npm install -g turbo
 ```
 
 # Buil the package
