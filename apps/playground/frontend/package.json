@@ -10,8 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@meshsdk/midnight-react": "*",
     "@meshsdk/midnight-core": "*",
+    "@meshsdk/midnight-react": "*",
     "@meshsdk/midnight-wallet": "*",
     "@radix-ui/react-dropdown-menu": "^2.1.15",
     "@radix-ui/react-slot": "^1.2.3",
@@ -19,7 +19,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.533.0",
-    "pino": "^9.7.0",
+    "pino": "^8.17.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.7.1",
