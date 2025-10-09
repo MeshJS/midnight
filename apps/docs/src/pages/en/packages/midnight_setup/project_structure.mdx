@@ -1,0 +1,48 @@
+---
+title: Project Structure
+description: Understanding the monorepo structure and resources
+sidebarTitle: Project Structure
+---
+
+# Project Structure
+
+```
+├── packages/
+│   ├── api/          # Core API implementation
+│   ├── ui/           # React example app
+│   └── cli/          # Command-line tools
+├── compact/          # Smart contract source
+└── README.md
+```
+
+## Directory Overview
+
+### packages/api/
+Core API implementation containing:
+- Contract deployment logic
+- Provider management
+- State management utilities
+
+### packages/ui/
+Example React application demonstrating:
+- Wallet connection
+- Contract deployment
+- State reading and updates
+
+### packages/cli/
+Command-line tools for:
+- Development utilities
+- ZK parameter fetching
+- Testing helpers
+
+### compact/
+Smart contract source code:
+- Compact contracts
+- Compilation artifacts
+- Deployment scripts
+
+## Resources
+
+- [Midnight Network Docs](https://docs.midnight.network/)
+- [Mesh SDK Documentation](https://docs.meshjs.dev/)
+- [Lace Beta Wallet](https://chromewebstore.google.com/detail/lace-midnight-preview/hgeekaiplokcnmakghbdfbgnlfheichg)

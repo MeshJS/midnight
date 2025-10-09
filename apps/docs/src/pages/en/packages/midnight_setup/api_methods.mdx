@@ -1,0 +1,25 @@
+---
+title: Core API Methods
+description: MidnightSetupAPI methods and provider setup
+sidebarTitle: Core API Methods
+---
+
+# Core API Methods
+
+## MidnightSetupAPI
+
+| Method | Description | Usage |
+|--------|-------------|-------|
+| `deployContract(providers, contractInstance)` | Deploy a new contract | Creates new contract instance |
+| `joinContract(providers, contractInstance, address)` | Join existing contract | Connect to deployed contract |
+| `getContractState()` | Read contract state | Get current contract data |
+| `getLedgerState()` | Read ledger state | Get blockchain data |
+
+## Provider Setup
+
+```typescript
+import { setupProviders } from './lib/providers';
+
+const providers = await setupProviders();
+// Returns: MidnightSetupContractProviders
+```
