@@ -1,0 +1,63 @@
+---
+title: Quick Start
+description: Get started with @meshsdk/midnight-setup
+sidebarTitle: Quick Start
+---
+
+# Quick Start
+
+## Installation
+
+```bash
+yarn add @meshsdk/midnight-setup
+```
+
+## Basic Usage
+
+```typescript
+import { MidnightSetupAPI } from '@meshsdk/midnight-setup';
+
+// Deploy a new contract
+const api = await MidnightSetupAPI.deployContract(providers, contractInstance);
+
+// Join an existing contract
+const api = await MidnightSetupAPI.joinContract(providers, contractInstance, contractAddress);
+
+// Get contract state
+const state = await api.getContractState();
+
+// Get ledger state
+const ledgerState = await api.getLedgerState();
+```
+
+## What's Included
+
+This monorepo contains everything you need to build Midnight Network dApps:
+
+- **@meshsdk/midnight-setup** - Main npm package with API and types
+- **packages/ui** - Example React application
+- **packages/cli** - Command-line tools
+- **packages/api** - Core API implementation
+
+## Try the Project
+
+To test the complete setup locally, use this repository as reference:
+
+**Repository**: [https://github.com/MeshJS/midnight-setup](https://github.com/MeshJS/midnight-setup)
+
+```bash
+# 1. Install dependencies
+yarn install
+
+# 2. Build all packages
+yarn build:all
+
+# 3. Download fetch parameters
+cd packages/cli && ./fetch-zk-params.sh
+
+# 4. Start testnet with Docker
+docker-compose -f testnet.yml up -d
+
+# 5. Run the frontend
+cd ../ui && yarn start
+```

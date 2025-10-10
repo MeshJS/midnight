@@ -1,0 +1,60 @@
+---
+title: Wallet Integration
+description: Complete Lace Beta Wallet integration for Midnight Network
+sidebarTitle: Wallet Integration
+---
+
+# Lace Wallet Integration
+
+This project includes a complete Lace Beta Wallet integration for Midnight Network:
+
+## Wallet Features
+
+| Feature | Description | Implementation |
+|---------|-------------|----------------|
+| **Connect Wallet** | Connect to Lace Beta Wallet | `wallet.enable()` |
+| **Disconnect Wallet** | Disconnect from wallet | `wallet.disconnect()` |
+| **Get Wallet State** | Retrieve wallet address and keys | `wallet.state()` |
+| **Deploy Contract** | Deploy contracts through wallet | `wallet.submitTransaction()` |
+| **Join Contract** | Join existing contracts | `wallet.balanceAndProveTransaction()` |
+| **Balance Transactions** | Balance and prove transactions | Wallet API integration |
+
+## Wallet Provider Setup
+
+```typescript
+// Connect to Lace Wallet
+const wallet = window.midnight?.mnLace;
+if (!wallet) {
+  throw new Error('Please install Lace Beta Wallet for Midnight Network');
+}
+
+// Enable wallet and get state
+const walletAPI = await wallet.enable();
+const walletState = await walletAPI.state();
+const uris = await wallet.serviceUriConfig();
+```
+
+## React Wallet Hook
+
+```typescript
+import { useMidnightWallet } from './hooks/useMidnightWallet';
+
+function App() {
+  const { 
+    connectWallet, 
+    disconnectWallet, 
+    walletState, 
+    isConnected 
+  } = useMidnightWallet();
+  
+  return (
+    <div>
+      {isConnected ? (
+        <button onClick={disconnectWallet}>Disconnect</button>
+      ) : (
+        <button onClick={connectWallet}>Connect Wallet</button>
+      )}
+    </div>
+  );
+}
+```

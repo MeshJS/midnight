@@ -1,0 +1,68 @@
+---
+title: Integration Examples
+description: React hooks and integration examples
+sidebarTitle: Integration Examples
+---
+
+# Integration Examples
+
+## React Hook
+
+```typescript
+import { useMidnightContract } from './hooks/useMidnightContract';
+
+function App() {
+  const { api, deployContract, joinContract } = useMidnightContract();
+  
+  const handleDeploy = async () => {
+    const newApi = await deployContract();
+    console.log('Deployed:', newApi.deployedContractAddress);
+  };
+  
+  return <button onClick={handleDeploy}>Deploy Contract</button>;
+}
+```
+
+## Complete Example
+
+```typescript
+import { MidnightSetupAPI, useMidnightWallet } from '@meshsdk/midnight-setup';
+
+function MyDApp() {
+  const { connectWallet, isConnected, walletState } = useMidnightWallet();
+  
+  const handleDeployContract = async () => {
+    if (!isConnected) {
+      await connectWallet();
+      return;
+    }
+    
+    // Setup providers
+    const providers = await setupProviders();
+    
+    // Deploy contract
+    const api = await MidnightSetupAPI.deployContract(
+      providers, 
+      contractInstance
+    );
+    
+    console.log('Contract deployed at:', api.deployedContractAddress);
+  };
+  
+  return (
+    <div>
+      <h1>My Midnight dApp</h1>
+      {!isConnected ? (
+        <button onClick={connectWallet}>Connect Wallet</button>
+      ) : (
+        <div>
+          <p>Connected: {walletState.address}</p>
+          <button onClick={handleDeployContract}>
+            Deploy Contract
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+```
