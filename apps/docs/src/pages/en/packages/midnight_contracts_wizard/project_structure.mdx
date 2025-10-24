@@ -1,0 +1,154 @@
+---
+title: Project Structure
+description: Understanding the generated project structure
+---
+
+# Generated Project Structure
+
+When you create a project using the Midnight Contracts Wizard, it generates a complete directory structure with all necessary files.
+
+## Directory Layout
+
+```
+my-project/
+├── src/
+│   ├── [selected-contracts]/
+│   │   └── *.compact
+│   └── managed/          # Compiled contracts
+├── dist/                 # Distribution files
+├── package.json
+├── tsconfig.json
+├── tsconfig.build.json
+└── README.md
+```
+
+## Directory Breakdown
+
+### `/src`
+
+Contains all your contract source files.
+
+```
+src/
+├── tokenization/         # If selected
+│   └── token.compact
+├── staking/              # If selected
+│   └── staking.compact
+├── identity/             # If selected
+│   └── identity.compact
+├── oracle/               # If selected
+│   └── oracle.compact
+├── lending/              # If selected
+│   └── lending.compact
+└── managed/              # Auto-generated
+    └── *.ts              # Compiled TypeScript
+```
+
+### `/src/managed`
+
+Automatically generated directory containing compiled TypeScript files from your `.compact` contracts. **Do not edit manually** - these files are regenerated on each build.
+
+### `/dist`
+
+Output directory for the final compiled JavaScript and type definitions, ready for distribution or deployment.
+
+## Configuration Files
+
+### `package.json`
+
+Contains project metadata, dependencies, and build scripts:
+
+```json
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "compile": "compact-cli compile src/**/*.compact",
+    "clean": "rm -rf dist src/managed"
+  },
+  "dependencies": {
+    "@midnight-ntwrk/compact-runtime": "^0.8.1",
+    "@midnight-ntwrk/midnight-js-types": "^2.0.2"
+  }
+}
+```
+
+### `tsconfig.json`
+
+Main TypeScript configuration for development:
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": ["ES2020"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
+    "rootDir": "./src"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
+```
+
+### `tsconfig.build.json`
+
+Extends main config for production builds:
+
+```json
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true
+  },
+  "exclude": ["**/*.test.ts", "**/*.spec.ts"]
+}
+```
+
+## Contract Files
+
+Each selected contract includes its `.compact` source file:
+
+### Example: `src/tokenization/token.compact`
+
+```compact
+contract Token {
+  // ZK circuit implementations
+  circuit mint(amount: Secret) -> Public {
+    // Minting logic
+  }
+  
+  circuit transfer(to: Address, amount: Secret) -> Public {
+    // Transfer logic
+  }
+  
+  // Additional circuits...
+}
+```
+
+## README.md
+
+Each generated project includes a comprehensive README with:
+- Project overview
+- Installation instructions
+- Build commands
+- Contract descriptions
+- Usage examples
+- Deployment guide
+
+## Next Steps
+
+Now that you understand the project structure:
+- Start modifying contracts in `src/`
+- Run builds with `npm run build`
+- Integrate with your dApp
+- Deploy to Midnight Network
+
+

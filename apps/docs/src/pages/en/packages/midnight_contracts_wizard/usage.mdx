@@ -1,0 +1,84 @@
+---
+title: Usage
+description: Learn how to use the Midnight Contracts Wizard CLI tool
+---
+
+# Usage
+
+The Midnight Contracts Wizard provides an interactive command-line interface to scaffold new contract projects.
+
+## Basic Usage
+
+Run the wizard using npx (no installation required):
+
+```bash
+npx @meshsdk/midnight-contracts-wizard
+```
+
+## Interactive Mode
+
+When you run the wizard, it will guide you through an interactive setup:
+
+1. **Project Name** - Enter a name for your new project
+2. **Select Contracts** - Choose which contract templates to include:
+   - Tokenization Contract
+   - Staking Contract
+   - Identity Contracts
+   - Oracle Contract
+   - Lending & Borrowing Contract
+3. **Confirmation** - Review your selections and confirm
+
+## Example Session
+
+```bash
+$ npx @meshsdk/midnight-contracts-wizard
+
+Welcome to Midnight Contracts Wizard!
+? Enter your project name: my-midnight-contracts
+? Select contracts to include: (Use arrow keys and space to select)
+  ◉ Tokenization Contract (7 ZK circuits)
+  ◯ Staking Contract (8 ZK circuits)
+  ◉ Identity Contracts (1 ZK circuit)
+  ◯ Oracle Contract (7 ZK circuits)
+  ◯ Lending & Borrowing Contract (7 ZK circuits)
+
+✓ Project created successfully!
+✓ Tokenization contract added
+✓ Identity contracts added
+
+📋 Next steps:
+1) Navigate to the project folder:
+   cd ./my-midnight-contracts
+
+2) Compile your smart contracts:
+   compact compile contracts/tokenization/tokenization.compact ./src/managed/tokenization
+
+   compact compile contracts/identity/identity.compact ./src/managed/identity
+
+💡 Your contracts will be compiled to `src/managed/`  
+💡 Check the `README.md` for detailed instructions
+```
+
+## Command Options
+
+### Help
+
+Display help information:
+
+```bash
+npx @meshsdk/midnight-contracts-wizard --help
+```
+
+### Version
+
+Check the installed version:
+
+```bash
+npx @meshsdk/midnight-contracts-wizard --version
+```
+
+## Next Steps
+
+- Explore [Available Contracts](/en/packages/midnight_contracts_wizard/contracts) to understand each contract type
+- Review [Project Structure](/en/packages/midnight_contracts_wizard/project_structure) to learn about generated files
+
