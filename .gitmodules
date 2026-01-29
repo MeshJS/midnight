@@ -1,0 +1,3 @@
+[submodule "midnight-dapp-connector-api"]
+	path = midnight-dapp-connector-api
+	url = git@github.com:midnightntwrk/midnight-dapp-connector-api.git

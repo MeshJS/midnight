@@ -1,7 +1,7 @@
 import { createContext, useCallback, useEffect, useState } from 'react';
 import { type Logger } from 'pino';
 import { MidnightBrowserWallet } from '@meshsdk/midnight-wallet';
-import { ServiceUriConfig } from '@midnight-ntwrk/dapp-connector-api';
+import { Configuration } from '@midnight-ntwrk/dapp-connector-api';
 
 export enum WalletState {
   NOT_CONNECTED = 'NOT_CONNECTED',
@@ -47,7 +47,7 @@ export interface WalletContext {
   address: string | undefined;
   coinPublicKey: string | undefined;
   encryptionPublicKey: string | undefined;
-  uris: ServiceUriConfig | undefined;
+  uris: Configuration | undefined;
   isProofServerOnline: boolean;
 }
 
@@ -63,7 +63,7 @@ export const useWalletStore = (logger?: Logger): WalletContext => {
   const [coinPublicKey, setCoinPublicKey] = useState<string>();
   const [encryptionPublicKey, setEncryptionPublicKey] = useState<string | undefined>(undefined);
   const [walletName, setWaName] = useState<string | undefined>(undefined);
-  const [uris, setUris] = useState<ServiceUriConfig | undefined>(undefined);
+  const [uris, setUris] = useState<Configuration | undefined>(undefined);
   const [isProofServerOnline, setIsProofServerOnline] = useState<boolean>(false);
 
   const connectWallet = useCallback(

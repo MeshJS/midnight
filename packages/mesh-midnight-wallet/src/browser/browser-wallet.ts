@@ -1,6 +1,4 @@
-import type { CoinInfo } from '@midnight-ntwrk/ledger';
-import { DAppConnectorAPI, DAppConnectorWalletAPI, ServiceUriConfig } from '@midnight-ntwrk/dapp-connector-api';
-import { Transaction } from '@midnight-ntwrk/zswap';
+import { InitialAPI, ConnectedAPI, Configuration } from "@midnight-ntwrk/dapp-connector-api";
 import { pipe as fnPipe } from 'fp-ts/lib/function.js';
 import { type Logger } from 'pino';
 import { catchError, concatMap, filter, firstValueFrom, interval, map, take, tap, throwError, timeout } from 'rxjs';
@@ -8,25 +6,25 @@ import { checkProofServerStatus } from '@meshsdk/midnight-core';
 
 declare global {
   interface Window {
-    midnight?: { [key: string]: DAppConnectorAPI };
+    midnight?: { [key: string]: InitialAPI };
   }
 }
 
 export class MidnightBrowserWallet {
-  _walletInstance: DAppConnectorWalletAPI | undefined;
-  _connectorAPI: DAppConnectorAPI | undefined;
+  _walletInstance: ConnectedAPI | undefined;
+  _connectorAPI: InitialAPI | undefined;
   _walletName: string | undefined;
-  _uris: ServiceUriConfig | undefined;
+  _uris: Configuration | undefined;
   _address: string | undefined;
   _coinPublicKey: string | undefined;
   _encryptionPublicKey: string | undefined;
   _proofServerOnline: boolean;
 
-  private constructor(    
-    _connectorAPI: DAppConnectorAPI,
-    walletInstance: DAppConnectorWalletAPI,
+  private constructor(
+    _connectorAPI: InitialAPI,
+    walletInstance: ConnectedAPI,
     walletName: string,
-    uris: ServiceUriConfig,
+    uris: Configuration,
     address: string,
     coinPublicKey: string,
     encryptionPublicKey: string,
@@ -43,24 +41,18 @@ export class MidnightBrowserWallet {
     this.logger = logger;
   }
 
-  static getAvailableWallets(): DAppConnectorAPI[] {
+  static getAvailableWallets(): InitialAPI[] {
     if (window === undefined) return [];
     if (window.midnight === undefined) return [];
 
-    const wallets: DAppConnectorAPI[] = [];
+    const wallets: InitialAPI[] = [];
     for (const key in window.midnight) {
       try {
         const _wallet = window.midnight[key];
         if (_wallet === undefined) continue;
         if (_wallet.name === undefined) continue;
         if (_wallet.apiVersion === undefined) continue;
-        wallets.push({
-          name: _wallet.name,
-          apiVersion: _wallet.apiVersion,
-          enable: _wallet.enable,
-          isEnabled: _wallet.isEnabled,
-          serviceUriConfig: _wallet.serviceUriConfig,
-        });
+        wallets.push(_wallet);
       } catch (e) {
         console.log(e);
       }
@@ -95,7 +87,7 @@ export class MidnightBrowserWallet {
         tap((connectorAPI) => {
           logger?.info(connectorAPI, 'Check for wallet connector API');
         }),
-        filter((connectorAPI): connectorAPI is DAppConnectorAPI => !!connectorAPI),      
+        filter((connectorAPI) => !!connectorAPI),      
         tap((connectorAPI) => {
           logger?.info(connectorAPI, 'Compatible wallet connector API found. Connecting.');
         }),
@@ -109,13 +101,6 @@ export class MidnightBrowserWallet {
               return new Error('Could not find Midnight Lace wallet. Extension installed?');
             }),
         }),
-        concatMap(async (connectorAPI) => {
-          const isEnabled = await connectorAPI.isEnabled();
-
-          logger?.info(isEnabled, 'Wallet connector API enabled status');
-
-          return connectorAPI;
-        }),
         timeout({
           first: 5_000,
           with: () =>
@@ -126,8 +111,8 @@ export class MidnightBrowserWallet {
             }),
         }),
         concatMap(async (connectorAPI) => ({
-          walletConnectorAPI: await connectorAPI.enable(),
-          connectorAPI,
+          walletConnectorAPI: await connectorAPI.connect("preview"),
+          connectorAPI
         })),
         catchError((error, apis) =>
           error
@@ -138,20 +123,20 @@ export class MidnightBrowserWallet {
             : apis,
         ),
         concatMap(async ({ walletConnectorAPI, connectorAPI }) => {
-          const uris = await connectorAPI.serviceUriConfig();
-          const { address, coinPublicKey, encryptionPublicKey } = await walletConnectorAPI.state();
+          const uris = await walletConnectorAPI.getConfiguration();
+          const { shieldedAddress, shieldedCoinPublicKey, shieldedEncryptionPublicKey } = await walletConnectorAPI.getShieldedAddresses();
           const proofServerOnline = await checkProofServerStatus(uris.proverServerUri);
 
           logger?.info('Connected to wallet connector API and retrieved service configuration');
 
-          const wallet = new MidnightBrowserWallet(            
+          const wallet = new MidnightBrowserWallet(
             connectorAPI,
             walletConnectorAPI,
             walletName,
             uris,
-            address,
-            coinPublicKey,
-            encryptionPublicKey,
+            shieldedAddress,
+            shieldedCoinPublicKey,
+            shieldedEncryptionPublicKey,
             proofServerOnline,
             logger,
           );
@@ -177,19 +162,18 @@ export class MidnightBrowserWallet {
     this._proofServerOnline = false;
   }
 
-  async balanceAndProveTransaction(tx: Transaction, newCoins: CoinInfo[]): Promise<Transaction> {
+  async balanceAndProveTransaction(tx: string): Promise<string> {
     if (this._walletInstance) {
-      const balancedAndProvedTransaction = await this._walletInstance.balanceAndProveTransaction(tx, newCoins);
-      return balancedAndProvedTransaction;
+      const { tx: balancedTx } = await this._walletInstance.balanceUnsealedTransaction(tx);
+      return balancedTx;
     } else {
       return Promise.reject(new Error('readonly'));
     }
   }
 
-  async submitTransaction(tx: Transaction): Promise<string> {
+  async submitTransaction(tx: string): Promise<void> {
     if (this._walletInstance) {
-      const submitTransaction = await this._walletInstance.submitTransaction(tx);
-      return submitTransaction;
+      await this._walletInstance.submitTransaction(tx);
     } else {
       return Promise.reject(new Error('readonly'));
     }
