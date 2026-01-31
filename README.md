@@ -124,7 +124,7 @@ This repository is a monorepo that contains the following:
   
   An interactive CLI tool to scaffold new Midnight smart contract projects with pre-built contract templates (Tokenization, Staking, Identity, Oracle, and Lending & Borrowing).
 
-- **[Escrow System](https://github.com/luislucena16/tokenless/tree/main/escrow)**
+- **[Escrow System](https://github.com/MeshJS/midnight-escrow-system)**
   
   A privacy-preserving escrow system built on Midnight Network for secure, trustless transactions.
 
